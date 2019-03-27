@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentView="@+id/car_content"
+        app:rightMenuView="@+id/sc_del">
+
+        <LinearLayout
+            android:id="@+id/car_content"
+            android:layout_width="wrap_content"
+            android:layout_height="114dp"
+            android:background="#cccccc"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_car"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/sc_del"
+            android:layout_width="60dp"
+            android:layout_height="114dp"
+            android:background="#FF0000"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="删除"
+                android:textColor="#000000"/>
+        </RelativeLayout>
+
+    </com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>
+</RelativeLayout >
