@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ShoppingCarPage.OrderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,8 +31,10 @@
         <activity android:name=".ForumPage.SendPostActivity" />
         <activity android:name=".ForumPage.RepeatPostActivity" />
         <activity android:name=".ShoppingCarPage.ShoppingCarActivity" />
-        <activity android:name=".ShoppingCarPage.OrderActivity" />
-        <activity android:name=".TransactionPage.ComDetailsActivity"></activity>
+        <!-- <activity android:name=".ShoppingCarPage.OrderActivity" /> -->
+        <activity android:name=".ShoppingCarPage.ComDetailsActivity" />
+        <activity android:name=".ShoppingCarPage.OrderDetailActivity" />
+        <activity android:name=".ShoppingCarPage.AddComActivity"></activity>
     </application>
 
 </manifest>

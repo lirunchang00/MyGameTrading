@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TransactionPage.ComDetailsActivity">
+    tools:context=".ShoppingCarPage.ComDetailsActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fcf8e5"
+        android:background="#e9e9e9"
         android:orientation="vertical"
         >
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ffe5a8"
+                android:background="#ffffff"
                 >
                 <ImageView
-                    android:id="@+id/post_repeat_back"
+                    android:id="@+id/com_details_back"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
@@ -36,7 +36,7 @@
                     android:text="商品详情"
                     />
                 <ImageView
-                    android:id="@+id/send_repeat_post"
+                    android:id="@+id/com_details_enjoy"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="2"
@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/com_details_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="#ffffff"
@@ -56,9 +57,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:layout_marginTop="2dp"
             android:orientation="vertical"
             >
             <TextView
+                android:id="@+id/com_details_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -83,25 +87,82 @@
                     android:textSize="18sp"
                     />
                 <TextView
+                    android:id="@+id/com_details_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textColor="#ff2626"
+                    android:layout_weight="10"
                     android:text="￥"
                     android:textSize="18sp"
 
                     />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#757575"
+                    android:text="库存："
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/com_details_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#757575"
+                    android:text="1"
+                    android:textSize="18sp"
+
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f9a600"
+                    android:textStyle="bold"
+                    android:text="活跃度："
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/com_details_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#f9a600"
+                    android:layout_weight="10"
+                    android:text="￥"
+                    android:textSize="18sp"
+
+                    />
+                <TextView
+                    android:id="@+id/com_details_solder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#757575"
+                    android:text="卖家"
+                    android:textSize="18sp"
+                    />
+
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="15dp"
+            android:background="#ffffff"
+            android:layout_marginTop="2dp"
             >
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 >
                 <TextView
@@ -111,15 +172,19 @@
                     android:text="操作系统"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/com_details_operating"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="10"
-                    android:text="@string/All_Forum"
+                    android:text="安卓"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -128,15 +193,19 @@
                     android:text="商品类型"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/com_details_type"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="10"
-                    android:text="@string/All_Forum"
+                    android:text="自抽号"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -145,15 +214,19 @@
                     android:text="服务器     "
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/com_details_server"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="10"
-                    android:text="@string/All_Forum"
+                    android:text="格里芬"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -162,15 +235,19 @@
                     android:text="商品内容"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/com_details_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="10"
-                    android:text="@string/All_Forum"
+                    android:text="11容"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -179,15 +256,19 @@
                     android:text="使用方式"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/com_details_method"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="10"
-                    android:text="@string/All_Forum"
+                    android:text="登陆即可"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -196,10 +277,13 @@
                     android:text="特别方式"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/com_details_special"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="10"
-                    android:text="@string/All_Forum"
+                    android:text="1111111111111111111111111111111111111111111111111111111111111111111111"
                     />
             </LinearLayout>
 

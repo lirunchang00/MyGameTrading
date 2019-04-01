@@ -63,10 +63,15 @@
             android:orientation="horizontal">
             <!--价格-->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textColor="#ff0000" />
+            <TextView
                 android:id="@+id/good_price_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="￥69.00"
+                android:text="69.00"
                 android:textColor="#ff0000" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="信誉度:"
+                    android:text="活跃度:"
                     android:textSize="11sp" />
                 <TextView
                     android:id="@+id/goods_salesvolume_tv"

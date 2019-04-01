@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#f8f1d9">
+    android:background="#ededed">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fdf8e3"
+            android:background="#ffffff"
             android:layout_marginBottom="3dp"
             >
             <com.example.administrator.gametrading.util.RoundImageView
@@ -91,7 +91,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fdf8e3"
+            android:background="#ffffff"
             android:layout_marginBottom="3dp"
             android:orientation="vertical"
             >
@@ -122,7 +122,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fdf8e3"
+            android:background="#ffffff"
             android:layout_marginBottom="3dp">
             <ImageView
                 android:layout_width="20dp"

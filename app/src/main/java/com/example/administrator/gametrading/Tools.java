@@ -25,4 +25,8 @@ public class Tools {
     public static String showPost = baseUrl+"showPost";
 
     public static String url_comImages = baseUrl+"comImages";
+
+    public static String allComUrl = baseUrl+"getAllCom";
+
+    public static String showDetail = baseUrl+"showDetail";
 }

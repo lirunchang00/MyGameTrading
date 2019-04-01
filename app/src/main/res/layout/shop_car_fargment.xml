@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fcf8e5"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <!--顶部布局-->
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="#ffdfb5"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
 
@@ -91,7 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#eeb873"
+            android:background="#ff5252"
             android:clickable="true"
             android:gravity="center"
             android:text="付款(0)"

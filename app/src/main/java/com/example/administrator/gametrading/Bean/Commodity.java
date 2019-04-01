@@ -1,59 +1,45 @@
 package com.example.administrator.gametrading.Bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 public class Commodity implements Serializable {
 
-    private int comId;               //商品id
-    private String comName;          //商品名称
-    private String comSynopsis;     //商品简介
-    private int comSoldNum;         //已售数量
-    private double comPrice;        //原价
-    private int comStock;           //库存
-    private String comImage;         //商品图片
-    private int comFlag;             //上下架
-    private String comClass;         //商品类别
-    private String seller;           //卖家
-    private int active;             //活跃度
+    private int comId;
+    private String comName;
+    private String comContent;
+    private String comNum;
+    private String comPrice;
+    private String comImage;
+    private String comSpecial;
+    private String operating;
+    private String comServer;
+    private String comMethod;
+    private String solder;
+    private int active;
+    private String type;
+    private String date;
 
-    public String getSeller() {
-        return seller;
+    public String getDate() {
+        return date;
     }
 
-    public void setSeller(String seller) {
-        this.seller = seller;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public int getActive() {
-        return active;
+    public String getType() {
+        return type;
     }
 
-    public void setActive(int active) {
-        this.active = active;
-    }
-
-    public Commodity(int comId, String comName, double comPrice, String comImage) {
-        this.comId = comId;
-        this.comName = comName;
-        this.comPrice = comPrice;
-        this.comImage = comImage;
-    }
-
-    public Commodity(int comId ,String comName, String comSynopsis, int comSoldNum, double comPrice, int comStock, String comImage,int comFlag,String comClass) {
-        this.comId=comId;
-        this.comName = comName;
-        this.comSynopsis = comSynopsis;
-        this.comSoldNum = comSoldNum;
-        this.comPrice = comPrice;
-        this.comStock = comStock;
-        this.comImage = comImage;
-        this.comFlag=comFlag;
-        this.comClass=comClass;
-
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getComId() {
-        return comId;
+        return this.comId;
     }
 
     public void setComId(int comId) {
@@ -68,36 +54,28 @@ public class Commodity implements Serializable {
         this.comName = comName;
     }
 
-    public String getComSynopsis() {
-        return comSynopsis;
+    public String getComContent() {
+        return comContent;
     }
 
-    public void setComSynopsis(String comSynopsis) {
-        this.comSynopsis = comSynopsis;
+    public void setComContent(String comContent) {
+        this.comContent = comContent;
     }
 
-    public int getComSoldNum() {
-        return comSoldNum;
+    public String getComNum() {
+        return comNum;
     }
 
-    public void setComSoldNum(int comSoldNum) {
-        this.comSoldNum = comSoldNum;
+    public void setComNum(String comNum) {
+        this.comNum = comNum;
     }
 
-    public double getComPrice() {
+    public String getComPrice() {
         return comPrice;
     }
 
-    public void setComPrice(double comPrice) {
+    public void setComPrice(String comPrice) {
         this.comPrice = comPrice;
-    }
-
-    public int getComStock() {
-        return comStock;
-    }
-
-    public void setComStock(int comStock) {
-        this.comStock = comStock;
     }
 
     public String getComImage() {
@@ -108,19 +86,101 @@ public class Commodity implements Serializable {
         this.comImage = comImage;
     }
 
-    public int getComFlag() {
-        return comFlag;
+    public String getComSpecial() {
+        return comSpecial;
     }
 
-    public void setComFlag(int comFlag) {
-        this.comFlag = comFlag;
+    public void setComSpecial(String comSpecial) {
+        this.comSpecial = comSpecial;
     }
 
-    public String getComClass() {
-        return comClass;
+    public String getOperating() {
+        return operating;
     }
 
-    public void setComClass(String comClass) {
-        this.comClass = comClass;
+    public void setOperating(String operating) {
+        this.operating = operating;
     }
+
+    public String getComServer() {
+        return comServer;
+    }
+
+    public void setComServer(String comServer) {
+        this.comServer = comServer;
+    }
+
+    public String getComMethod() {
+        return comMethod;
+    }
+
+    public void setComMethod(String comMethod) {
+        this.comMethod = comMethod;
+    }
+
+    public String getSolder() {
+        return solder;
+    }
+
+    public void setSolder(String solder) {
+        this.solder = solder;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    /*@Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(comId);
+        dest.writeString(comName);
+        dest.writeString(comContent);
+        dest.writeString(comMethod);
+        dest.writeString(comNum);
+        dest.writeString(comPrice);
+        dest.writeString(comImage);
+        dest.writeString(comSpecial);
+        dest.writeString(operating);
+        dest.writeString(comServer);
+        dest.writeString(comMethod);
+        dest.writeString(solder);
+        dest.writeInt(active);
+        dest.writeString(type);
+    }
+
+    public static final Creator<Commodity> CREATOR = new Creator<Commodity>() {
+        @Override
+        public Commodity createFromParcel(Parcel in) {
+            Commodity commodity = new Commodity();
+            commodity.comId = in.readInt();
+            commodity.comName = in.readString();
+            commodity.comContent = in.readString();
+            commodity.comNum = in.readString();
+            commodity.comPrice = in.readString();
+            commodity.comImage = in.readString();
+            commodity.comSpecial = in.readString();
+            commodity.operating = in.readString();
+            commodity.comServer = in.readString();
+            commodity.comMethod = in.readString();
+            commodity.solder = in.readString();
+            commodity.active = in.readInt();
+            commodity.type  = in.readString();
+            commodity.date = in.readString();
+            return commodity;
+        }
+
+        @Override
+        public Commodity[] newArray(int size) {
+            return new Commodity[size];
+        }
+    };*/
 }
