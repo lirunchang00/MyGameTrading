@@ -79,7 +79,9 @@ public class LoginService implements LoginInter{
             //获取session
             Response<String> superResponse = super.parseNetworkResponse(response);
             Map<String, String> responseHeaders = response.headers;
+            Log.e("SessionID",superResponse+"");
             String rawCookies = responseHeaders.get("Set-Cookie");
+            Log.e("rawCookies",rawCookies+"");
             String SessionID= rawCookies.substring(0, rawCookies.indexOf(";"));
             //Constant是一个自建的类，存储常用的全局变量
             Log.e("SessionID",SessionID+"");

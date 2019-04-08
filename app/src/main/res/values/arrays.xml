@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="operating">
+        <item>Android系统</item>
+        <item>IOS系统</item>
+    </string-array>
+
+    <string-array name="server">
+        <item>格里芬</item>
+        <item>Kar98</item>
+        <item>HK416</item>
+        <item>M4A1</item>
+        <item>M16A1</item>
+    </string-array>
+</resources>

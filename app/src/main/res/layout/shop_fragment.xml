@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fcf8e5"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <!-- //使页面不自动获取焦点-->
@@ -21,14 +21,18 @@
             android:orientation="vertical">
 
 
-            <android.support.design.widget.FloatingActionButton
+            <!--<android.support.design.widget.FloatingActionButton
                 android:id="@+id/fb_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="16dp"
                 android:backgroundTint="#13b9c7"
-                android:src="@drawable/main_my" />
+                android:background="@drawable/blue_enter_btn" />-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/shop_recyclerview"
@@ -36,8 +40,21 @@
                 android:layout_height="wrap_content">
 
             </android.support.v7.widget.RecyclerView>
-
+        </ScrollView>
         </FrameLayout>
-
+        <Button
+            android:id="@+id/to_add_com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/blue_enter_btn"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:text="成为卖家"
+            />
     </RelativeLayout>
 </LinearLayout>

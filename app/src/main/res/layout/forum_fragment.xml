@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#ffffff"
-    >
+    android:background="#f7f7f7">
     <LinearLayout
+        android:id="@+id/top_forum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
@@ -16,9 +17,11 @@
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/title_forum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fdfbf2"
+        android:layout_below="@+id/top_forum"
         android:orientation="horizontal">
 
         <Button
@@ -39,7 +42,28 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/forum_viewpager"
         android:layout_width="wrap_content"
+        android:layout_below="@+id/title_forum"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
-
-    </LinearLayout>
+        android:layout_gravity="center" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/to_send_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@mipmap/sendpost"
+        android:backgroundTint="#7aaffa"
+        app:elevation="10dp"
+        android:layout_margin="15dp"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/zhiding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/to_send_post"
+        android:layout_alignParentBottom="true"
+        android:src="@mipmap/zhiding"
+        android:backgroundTint="#7aaffa"
+        app:elevation="10dp"
+        android:layout_marginBottom="15dp"
+        />
+    </RelativeLayout>

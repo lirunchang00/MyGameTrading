@@ -1,5 +1,6 @@
 package com.example.administrator.gametrading.MainPage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,11 +11,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.administrator.gametrading.Adapter.TrandingAdapter;
 import com.example.administrator.gametrading.Bean.Commodity;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.Service.ShopService;
+import com.example.administrator.gametrading.ShoppingCarPage.AddComActivity;
 
 import java.util.ArrayList;
 
@@ -25,6 +28,7 @@ public class ShopFragment extends LazyLoadBaseFragment {
     private static final int CHANGE_UI = 1;
     private TrandingAdapter adapter;
     private View view;
+    private Button to_add_com;
 
     public ShopFragment(){}
 
@@ -45,7 +49,13 @@ public class ShopFragment extends LazyLoadBaseFragment {
     }
 
     private void init() {
-
+        to_add_com.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddComActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -57,6 +67,7 @@ public class ShopFragment extends LazyLoadBaseFragment {
 
     @Override
     protected void initView(View rootView) {
+        to_add_com = (Button)view.findViewById(R.id.to_add_com);
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.shop_recyclerview);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            android:layout_marginBottom="3dp"
+            android:layout_marginBottom="1dp"
             >
             <TextView
                 android:id="@+id/post_title"
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            android:layout_marginBottom="3dp"
+            android:layout_marginBottom="1dp"
             >
            <com.example.administrator.gametrading.util.RoundImageView
                android:id="@+id/post_head"
@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            android:layout_marginBottom="3dp"
+            android:layout_marginBottom="1dp"
             android:orientation="vertical"
             >
             <TextView
@@ -134,8 +134,8 @@
                     android:id="@+id/post_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="时间"
+                    android:layout_weight="3"
+                    android:text="2019-4-8 21:14"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -144,7 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            android:layout_marginBottom="3dp">
+            android:layout_marginBottom="1dp">
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"

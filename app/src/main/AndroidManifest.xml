@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ShoppingCarPage.OrderActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,18 +23,28 @@
             </intent-filter>
         </activity>
         <activity android:name=".IndexPage.GirlsActivity" />
-        <!-- <activity android:name=".ShoppingCarPage.ProductDetailsActivity" /> -->
         <activity android:name=".IndexPage.DetailActivity" />
-        <activity android:name=".MyCenterPage.LoginActivity" />
-        <activity android:name=".MyCenterPage.RegisterActivity" />
+       <activity android:name=".MyCenterPage.LoginActivity" />
+       <activity android:name=".MyCenterPage.RegisterActivity" />
         <activity android:name=".ForumPage.PostActivity" />
         <activity android:name=".ForumPage.SendPostActivity" />
         <activity android:name=".ForumPage.RepeatPostActivity" />
         <activity android:name=".ShoppingCarPage.ShoppingCarActivity" />
-        <!-- <activity android:name=".ShoppingCarPage.OrderActivity" /> -->
+       <activity android:name=".ShoppingCarPage.OrderActivity" />
         <activity android:name=".ShoppingCarPage.ComDetailsActivity" />
         <activity android:name=".ShoppingCarPage.OrderDetailActivity" />
-        <activity android:name=".ShoppingCarPage.AddComActivity"></activity>
+        <activity android:name=".ShoppingCarPage.AddComActivity" />
+        <activity android:name=".ShoppingCarPage.AddComMsgActivity" />
+        <activity android:name=".MyCenterPage.MyPostActivity" />
+        <activity android:name=".MyCenterPage.ComCollectionActivity" />
+        <activity android:name=".MyCenterPage.MyOrderActivity" />
+        <activity android:name=".MyCenterPage.MyRepeatActivity" />
+        <activity android:name=".MyCenterPage.PostCollectionActivity" />
+        <activity android:name=".MyCenterPage.MySolderActivity" />
+        <activity android:name=".MyCenterPage.UpdatePasswordActivity" />
+        <activity android:name=".MyCenterPage.UpdateMessageActivity">
+
+        </activity>
     </application>
 
 </manifest>

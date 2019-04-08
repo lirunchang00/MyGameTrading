@@ -2,9 +2,9 @@ package com.example.administrator.gametrading;
 
 public class Tools {
 
-    public static String headUrl = "http://192.168.1.165:8080/";
+    public static String headUrl = "http://192.168.43.249:8080/";
 
-    public static String baseUrl = "http://192.168.1.165:8080/GameTrading/";
+    public static String baseUrl = "http://192.168.43.249:8080/GameTrading/";
 
     public static String loginurl = baseUrl+"login";
 
@@ -29,4 +29,8 @@ public class Tools {
     public static String allComUrl = baseUrl+"getAllCom";
 
     public static String showDetail = baseUrl+"showDetail";
+
+    public static String addCom = baseUrl+"addCom";
+
+    public static String imageurl=baseUrl+"uploadMyImage";
 }

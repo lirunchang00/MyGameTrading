@@ -29,7 +29,7 @@ import cn.smssdk.SMSSDK;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private ImageView back;
+    private Button back;
     private Button registerBtn;
     private Button registerMsgBtn;
     private EditText userName;

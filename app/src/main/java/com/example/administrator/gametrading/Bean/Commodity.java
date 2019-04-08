@@ -21,6 +21,60 @@ public class Commodity implements Serializable {
     private int active;
     private String type;
     private String date;
+    private String account;
+    private String password;
+    private String character;
+    private String secretPhone;
+    private String phone;
+    private String qq;
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(String character) {
+        this.character = character;
+    }
+
+    public String getSecretPhone() {
+        return secretPhone;
+    }
+
+    public void setSecretPhone(String secretPhone) {
+        this.secretPhone = secretPhone;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
 
     public String getDate() {
         return date;
@@ -134,7 +188,32 @@ public class Commodity implements Serializable {
         this.active = active;
     }
 
-    /*@Override
+    @Override
+    public String toString() {
+        return "Commodity{" +
+                "comId=" + comId +
+                ", comName='" + comName + '\'' +
+                ", comContent='" + comContent + '\'' +
+                ", comNum='" + comNum + '\'' +
+                ", comPrice='" + comPrice + '\'' +
+                ", comImage='" + comImage + '\'' +
+                ", comSpecial='" + comSpecial + '\'' +
+                ", operating='" + operating + '\'' +
+                ", comServer='" + comServer + '\'' +
+                ", comMethod='" + comMethod + '\'' +
+                ", solder='" + solder + '\'' +
+                ", active=" + active +
+                ", type='" + type + '\'' +
+                ", date='" + date + '\'' +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", character='" + character + '\'' +
+                ", secretPhone='" + secretPhone + '\'' +
+                ", phone='" + phone + '\'' +
+                ", qq='" + qq + '\'' +
+                '}';
+    }
+/*@Override
     public int describeContents() {
         return 0;
     }

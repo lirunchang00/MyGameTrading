@@ -33,7 +33,7 @@ public class SendPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_post);
-        Cookie = "lrc";//new SessionUtil(context).GetSession();
+        Cookie = new SessionUtil(context).GetSession();
         Log.e("Cookie",""+Cookie);
 
         initView();

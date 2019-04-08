@@ -22,16 +22,18 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:padding="10dp">
-        <ImageView
-            android:id="@+id/login_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/back"
+        <Button
+            android:id="@+id/add_com_msg_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:background="@mipmap/back"
             />
         <!--APP_Name-->
         <TextView
             android:id="@+id/appName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
@@ -119,7 +121,7 @@
             android:layout_below="@+id/login_remember"
             android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
-            android:background="#000000"
+            android:background="@drawable/blue_enter_btn"
             android:gravity="center"
             android:text="@string/Login"
             android:textColor="@color/white"

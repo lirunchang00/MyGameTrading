@@ -12,12 +12,5 @@
         >
     </android.support.v7.widget.RecyclerView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floating_btn_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        app:elevation="10dp"
-        android:layout_margin="15dp"/>
+
 </RelativeLayout>

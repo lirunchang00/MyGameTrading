@@ -22,11 +22,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:padding="10dp">
-        <ImageView
+        <Button
             android:id="@+id/register_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:background="@mipmap/back"
             />
         <!--APP_Name-->
         <TextView
@@ -79,6 +81,7 @@
                 android:id="@+id/register_msg_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/blue_enter_btn"
                 android:text="获取验证码"
                 android:textColor="#ffffff"/>
         </LinearLayout>
@@ -116,7 +119,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="167dp"
-            android:background="#1896f7"
+            android:background="@drawable/blue_enter_btn"
             android:text="@string/Register"
             android:textColor="@color/white"
             android:textSize="20sp" />

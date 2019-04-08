@@ -1,8 +1,10 @@
 package com.example.administrator.gametrading.MainPage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -18,6 +20,7 @@ import com.example.administrator.gametrading.Adapter.ForumAdapter;
 import com.example.administrator.gametrading.Adapter.ViewPageAdapter;
 import com.example.administrator.gametrading.ForumPage.AllFragment;
 import com.example.administrator.gametrading.ForumPage.EssenceFragment;
+import com.example.administrator.gametrading.ForumPage.SendPostActivity;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.util.myViewPager;
 
@@ -30,6 +33,7 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
     private View view;
     private ViewPager viewPager;
     private Button all_forum,essence_forum;
+    private FloatingActionButton zhiding,to_send_post;
 
     public static final int PAGE_ONE =   0;
     public static final int PAGE_TWO =   1;
@@ -57,9 +61,13 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
         list = new ArrayList<>();
         all_forum = (Button)view.findViewById(R.id.all_forum);
         essence_forum = (Button)view.findViewById(R.id.essence_forum);
+        zhiding = (FloatingActionButton)view.findViewById(R.id.zhiding);
+        to_send_post = (FloatingActionButton)view.findViewById(R.id.to_send_post);
 
         all_forum.setOnClickListener(this);
         essence_forum.setOnClickListener(this);
+        to_send_post.setOnClickListener(this);
+        zhiding.setOnClickListener(this);
 
         list.add(new AllFragment());
         list.add(new EssenceFragment());
@@ -122,6 +130,13 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
             case R.id.essence_forum:
                 essence_forum.setBackgroundResource(R.drawable.all_forum_light);
                 viewPager.setCurrentItem(1);
+                break;
+            case R.id.to_send_post:
+                Intent intent =new Intent(getActivity(), SendPostActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.zhiding:
+
                 break;
         }
     }

@@ -42,25 +42,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="7"
-                android:text="@string/Essence"
+                android:text="我的ID很时尚"
                 />
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:background="@mipmap/forum_yellow"
+                android:background="@mipmap/clock"
                 />
             <TextView
                 android:id="@+id/forum_all_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_weight="2"
-                android:text="@string/Essence"
+                android:layout_weight="4"
+                android:text="2019-4-8 21:21"
                 />
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:background="@mipmap/forum_yellow"
+                android:background="@mipmap/repeatt"
                 />
             <TextView
                 android:id="@+id/forum_all_repeat"
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:text="@string/Essence"
+                android:text="256"
                 />
         </LinearLayout>
 
