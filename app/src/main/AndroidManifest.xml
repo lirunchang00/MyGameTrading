@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -22,15 +23,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".IndexPage.GirlsActivity" />
         <activity android:name=".IndexPage.DetailActivity" />
-       <activity android:name=".MyCenterPage.LoginActivity" />
-       <activity android:name=".MyCenterPage.RegisterActivity" />
+        <activity android:name=".MyCenterPage.LoginActivity" />
+        <activity android:name=".MyCenterPage.RegisterActivity" />
         <activity android:name=".ForumPage.PostActivity" />
         <activity android:name=".ForumPage.SendPostActivity" />
         <activity android:name=".ForumPage.RepeatPostActivity" />
-        <activity android:name=".ShoppingCarPage.ShoppingCarActivity" />
-       <activity android:name=".ShoppingCarPage.OrderActivity" />
+        <activity android:name=".ShoppingCarPage.OrderActivity" />
         <activity android:name=".ShoppingCarPage.ComDetailsActivity" />
         <activity android:name=".ShoppingCarPage.OrderDetailActivity" />
         <activity android:name=".ShoppingCarPage.AddComActivity" />
@@ -42,9 +43,9 @@
         <activity android:name=".MyCenterPage.PostCollectionActivity" />
         <activity android:name=".MyCenterPage.MySolderActivity" />
         <activity android:name=".MyCenterPage.UpdatePasswordActivity" />
-        <activity android:name=".MyCenterPage.UpdateMessageActivity">
-
-        </activity>
+        <activity android:name=".MyCenterPage.UpdateMessageActivity" />
+        <activity android:name=".ForumPage.PostSearchActivity" />
+        <activity android:name=".ShoppingCarPage.ComSearchActivity"></activity>
     </application>
 
 </manifest>

@@ -3,14 +3,15 @@ package com.example.administrator.gametrading.Bean;
 import java.io.Serializable;
 
 public class OrderBean implements Serializable{
+    private int orderID;//订单号
     private String username;//用户名
     private String comName;//商品名
-    private int orderID;//订单号
     private String price;//单价
     private String phone;//电话
     private String date;
     private String orderImage;//商品图片
     private String status;//交易状态
+    private String email;
 
     public String getStatus() {
         return status;
@@ -26,20 +27,6 @@ public class OrderBean implements Serializable{
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderBean{" +
-                "username='" + username + '\'' +
-                ", comName='" + comName + '\'' +
-                ", orderID=" + orderID +
-                ", price=" + price +
-                ", phone='" + phone + '\'' +
-                ", date='" + date + '\'' +
-                ", orderImage='" + orderImage + '\'' +
-                ", status='" + status + '\'' +
-                '}';
     }
 
     public String getUsername() {
@@ -89,6 +76,29 @@ public class OrderBean implements Serializable{
 
     public String getOrderImage() {
         return orderImage;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderBean{" +
+                "orderID=" + orderID +
+                ", username='" + username + '\'' +
+                ", comName='" + comName + '\'' +
+                ", price='" + price + '\'' +
+                ", phone='" + phone + '\'' +
+                ", date='" + date + '\'' +
+                ", orderImage='" + orderImage + '\'' +
+                ", status='" + status + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setOrderImage(String orderImage) {

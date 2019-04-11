@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private RadioButton main_illustration;
     private RadioButton main_forum;
     private RadioButton main_shop;
-    private RadioButton main_shop_car;
+   // private RadioButton main_shop_car;
     private RadioButton main_my;
     private myViewPager vpager;
     private ViewPageAdapter viewPageAdapter;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         main_illustration = (RadioButton)findViewById(R.id.main_illustration);
         main_forum = (RadioButton)findViewById(R.id.main_forum);
         main_shop = (RadioButton)findViewById(R.id.main_shop);
-        main_shop_car = (RadioButton)findViewById(R.id.main_shop_car);
+       // main_shop_car = (RadioButton)findViewById(R.id.main_shop_car);
         main_my = (RadioButton)findViewById(R.id.main_my);
 
         vpager = (myViewPager)findViewById(R.id.vpager);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         main_illustration.setOnClickListener(this);
         main_forum.setOnClickListener(this);
         main_shop.setOnClickListener(this);
-        main_shop_car.setOnClickListener(this);
+        //main_shop_car.setOnClickListener(this);
         main_my.setOnClickListener(this);
 
     }
@@ -74,13 +74,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 resetSelected();
                 vpager.setCurrentItem(PAGE_THREE);
                 break;
-            case R.id.main_shop_car:
+           /* case R.id.main_shop_car:
                 resetSelected();
                 vpager.setCurrentItem(PAGE_FOUR);
-                break;
+                break;*/
             case R.id.main_my:
                 resetSelected();
-                vpager.setCurrentItem(PAGE_FIVE);
+                vpager.setCurrentItem(PAGE_FOUR);
                 break;
         }
     }
@@ -97,11 +97,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             case R.id.main_shop:
                 vpager.setCurrentItem(PAGE_THREE);
                 break;
-            case R.id.main_shop_car:
+            /*case R.id.main_shop_car:
                 vpager.setCurrentItem(PAGE_FOUR);
-                break;
+                break;*/
             case R.id.main_my:
-                vpager.setCurrentItem(PAGE_FIVE);
+                vpager.setCurrentItem(PAGE_FOUR);
                 break;
         }
     }
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         main_illustration.setSelected(false);
         main_forum.setSelected(false);
         main_shop.setSelected(false);
-        main_shop_car.setSelected(false);
+       // main_shop_car.setSelected(false);
         main_my.setSelected(false);
     }
 }

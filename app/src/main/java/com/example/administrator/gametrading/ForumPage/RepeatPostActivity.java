@@ -24,7 +24,6 @@ public class RepeatPostActivity extends AppCompatActivity {
     private Context context;
     private ImageView back,send_repeat;
     private EditText send_repeat_content;
-    private PostService postService;
     private String content;
     private Forum  forum,myForum;
 
@@ -56,16 +55,15 @@ public class RepeatPostActivity extends AppCompatActivity {
 
     private void sendRepeat() {
         intent=getIntent();
-        postService = new PostService();
         content=send_repeat_content.getText().toString();
-        Cookie = "lrc";//new SessionUtil(context).GetSession();
-
+        Cookie = new SessionUtil(getApplicationContext()).GetSession();
         Log.e("Cookie",""+Cookie);
         forum = (Forum)intent.getParcelableExtra("last");
 
         int postid = forum.getPostid();
         int floor = Integer.valueOf(forum.getFloor())+1;
-
+        String title = forum.getTitle();
+        Log.e("postid",postid+"");
         Log.e("floor",floor+"");
         String floor1 = String.valueOf(floor);
 
@@ -79,7 +77,10 @@ public class RepeatPostActivity extends AppCompatActivity {
         myForum.setFloor(floor1);
         myForum.setContent(content);
         myForum.setTime(time);
-        myForum.setAuthor(Cookie);
+        String cookie = Cookie.substring(5);
+        myForum.setAuthor(cookie);
+        myForum.setTitle(title);
+        Log.e("forum",myForum.toString());
     }
 
     private void initView() {

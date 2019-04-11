@@ -214,12 +214,7 @@ public class AddComActivity extends AppCompatActivity{
             commodity.setComMethod(ComMethod);
             commodity.setComServer(s1);
             commodity.setComImage(picPath);
-            Log.e("getComName",commodity.getComName()+"");
-            Log.e("getType",commodity.getType()+"");
-            Log.e("getOperating",commodity.getOperating()+"");
-            Log.e("getComMethod",commodity.getComMethod()+"");
-            Log.e("getComServer",commodity.getComServer()+"");
-            Log.e("getComImage",commodity.getComImage()+"");
+            Log.e("commodity",commodity.toString());
             Intent intent = new Intent(AddComActivity.this,AddComMsgActivity.class);
             intent.putExtra("commodity",commodity);
             startActivity(intent);

@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,10 +32,14 @@ public class ForumViewAdapter extends RecyclerView.Adapter<ForumViewAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = View.inflate(context, R.layout.item_forum_all, null);
+       /* View view = View.inflate(context, R.layout.item_forum_all, null);
+        */
+        LayoutInflater inflater  = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_forum_all,null,true);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(lp);
         final ViewHolder holder = new ViewHolder(view);
         final Context context  = view.getContext();
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +47,7 @@ public class ForumViewAdapter extends RecyclerView.Adapter<ForumViewAdapter.View
 
                 Forum forum  = mForumList.get(io);
                 Log.e("forum1",""+forum.getAuthor());
+                Log.e("forum1",""+forum.getPostid());
                 Intent intent = new Intent(context,PostActivity.class);
                 intent.putExtra("forum",forum);
 
@@ -69,7 +76,8 @@ public class ForumViewAdapter extends RecyclerView.Adapter<ForumViewAdapter.View
         viewHolder.repeat.setText(forum.getRepeat());
         boolean essence  = forum.isEssence();
         if (essence){
-            viewHolder.title.setTextColor(Color.parseColor("#00CD00"));
+            viewHolder.title.setTextColor(ContextCompat.getColor(context,R.color.essence_title));
+
         }
 
         /*viewHolder.indexName.setText(index.getName());

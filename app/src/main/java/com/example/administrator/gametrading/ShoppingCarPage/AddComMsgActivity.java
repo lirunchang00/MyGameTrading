@@ -16,6 +16,7 @@ import com.example.administrator.gametrading.MyCenterPage.LoginActivity;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.Service.OrderService;
 import com.example.administrator.gametrading.Tools;
+import com.example.administrator.gametrading.util.SessionUtil;
 import com.example.administrator.gametrading.util.UploadUtil;
 
 import java.text.SimpleDateFormat;
@@ -29,9 +30,10 @@ public class AddComMsgActivity extends AppCompatActivity {
     private Intent intent;
     private Commodity commodity;
     private String picPath = null;
-    private String Cookie = "13650223878";
+    private String Cookie = "";
     private OrderService orderService;
     private String Account,Password,Character,SecretPhone,Phone,Qq;
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +71,11 @@ public class AddComMsgActivity extends AppCompatActivity {
         String image = picPath.substring(22);
         //String cookie = Cookie.substring(5);
         Log.e("image",image);
-
-
+        Cookie = new SessionUtil(context).GetSession();
+        String cookie = "";
+        if (Cookie!="") {
+             cookie = Cookie.substring(5);
+        }
         if (picPath!=null){
             touploadFile(AddComMsgActivity.this);
         }else {
@@ -87,7 +92,7 @@ public class AddComMsgActivity extends AppCompatActivity {
         commodity1.setType(commodity.getType());
         commodity1.setOperating(commodity.getOperating());
         commodity1.setComSpecial(commodity.getComSpecial());
-        commodity1.setSolder(Cookie);
+        commodity1.setSolder(cookie);
         commodity1.setComContent(commodity.getComContent());
         commodity1.setComMethod(commodity.getComMethod());
         commodity1.setComServer(commodity.getComServer());

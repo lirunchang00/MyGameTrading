@@ -10,19 +10,7 @@ public class CollectionBean  implements Serializable {
     private String solder;
     private String price;
     private String head;
-
-    @Override
-    public String toString() {
-        return "CollectionBean{" +
-                "id=" + id +
-                ", comId=" + comId +
-                ", comName='" + comName + '\'' +
-                ", image='" + image + '\'' +
-                ", solder='" + solder + '\'' +
-                ", price='" + price + '\'' +
-                ", head='" + head + '\'' +
-                '}';
-    }
+    private String status;
 
     public int getId() {
         return id;
@@ -78,5 +66,27 @@ public class CollectionBean  implements Serializable {
 
     public void setHead(String head) {
         this.head = head;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "CollectionBean{" +
+                "id=" + id +
+                ", comId=" + comId +
+                ", comName='" + comName + '\'' +
+                ", image='" + image + '\'' +
+                ", solder='" + solder + '\'' +
+                ", price='" + price + '\'' +
+                ", head='" + head + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

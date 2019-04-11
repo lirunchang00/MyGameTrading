@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -12,12 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.administrator.gametrading.Adapter.TrandingAdapter;
 import com.example.administrator.gametrading.Bean.Commodity;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.Service.ShopService;
 import com.example.administrator.gametrading.ShoppingCarPage.AddComActivity;
+import com.example.administrator.gametrading.ShoppingCarPage.ComSearchActivity;
+import com.example.administrator.gametrading.util.SpacesItemDecoration;
 
 import java.util.ArrayList;
 
@@ -29,6 +34,7 @@ public class ShopFragment extends LazyLoadBaseFragment {
     private TrandingAdapter adapter;
     private View view;
     private Button to_add_com;
+    private LinearLayout top_shop;
 
     public ShopFragment(){}
 
@@ -56,6 +62,13 @@ public class ShopFragment extends LazyLoadBaseFragment {
                 startActivity(intent);
             }
         });
+        top_shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ComSearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -68,13 +81,14 @@ public class ShopFragment extends LazyLoadBaseFragment {
     @Override
     protected void initView(View rootView) {
         to_add_com = (Button)view.findViewById(R.id.to_add_com);
+        top_shop = (LinearLayout)view.findViewById(R.id.top_shop);
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.shop_recyclerview);
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new TrandingAdapter(getContext(),commodityList);
+        recyclerView.addItemDecoration(new SpacesItemDecoration(10));
+        adapter = new TrandingAdapter(getActivity(),commodityList);
         recyclerView.setAdapter(adapter);
-
-
     }
 
 }

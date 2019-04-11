@@ -12,6 +12,7 @@
         android:orientation="vertical"
         >
         <RelativeLayout
+            android:id="@+id/post_top"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -37,189 +38,52 @@
                 android:text="主题详情" />
 
         </RelativeLayout>
-       <!-- <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_below="@+id/post_top">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fdf8e3"
-                android:layout_marginBottom="1dp"
-                >
-                <TextView
-                    android:id="@+id/post_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textSize="16sp"
-                    android:text="[开演之时] 今天面试，发现咕哒子一名，你游原来真有女玩家啊！"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#fdf8e3"
-                android:layout_marginBottom="1dp"
-                >
-                <com.example.administrator.gametrading.util.RoundImageView
-                    android:id="@+id/post_head"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/main_my"
-                    app:mtype="circle"
-                    />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="8"
-                    >
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginStart="5dp"
-                            android:text="ID:"
-                            />
-                        <TextView
-                            android:id="@+id/post_author"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/Essence"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginStart="5dp"
-                            android:text="活跃度:"
-                            />
-                        <TextView
-                            android:id="@+id/post_active"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:text="@string/Essence"
-                            />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    >
-                    <TextView
-                        android:id="@+id/post_floor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="5dp"
-                        android:text="@string/Essence"
-                        />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#fdf8e3"
-                android:layout_marginBottom="1dp"
                 android:orientation="vertical"
                 >
-                <TextView
-                    android:id="@+id/post_content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/Essence"
-                    />
                 <LinearLayout
+                    android:id="@+id/post_l_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_marginBottom="1dp"
+                    >
                     <TextView
+                        android:id="@+id/post_title_activity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="8"
-                        />
-                    <TextView
-                        android:id="@+id/post_time"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="时间"
+                        android:layout_margin="10dp"
+                        android:textSize="16sp"
+                        android:text="[开演之时] 今天面试，发现咕哒子一名，你游原来真有女玩家啊！"
                         />
                 </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#fdf8e3"
-                android:layout_marginBottom="3dp">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:src="@mipmap/like"
-                    />
-                <TextView
-                    android:id="@+id/post_like1"
-                    android:layout_width="wrap_content"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/forum_post_rview"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
-                    android:textSize="15sp"
-                    android:layout_weight="40"
-                    android:text="123"
-                    />
-                <ImageView
-                    android:id="@+id/post_repeat"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/repeat"
-                    android:layout_weight="3"
-                    />
-                <ImageView
-                    android:id="@+id/post_report"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/report"
-                    android:layout_weight="1"
-                    />
+                    >
+                </android.support.v7.widget.RecyclerView>
             </LinearLayout>
-        </LinearLayout>-->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/forum_post_rview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-        </android.support.v7.widget.RecyclerView>
+        </ScrollView>
+
+
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/post_repeat_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="10dp"
-            android:alpha="0.5"
-            app:elevation="10dp" />
+            android:layout_alignParentBottom="true"
+            android:src="@mipmap/sendpost"
+            android:backgroundTint="#7aaffa"
+            app:elevation="10dp"
+            android:layout_margin="15dp" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

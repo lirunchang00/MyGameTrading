@@ -37,26 +37,29 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         String title  = forum.getTitle();
         int flag = Integer.valueOf(forum.getFloor());
         int a  = flag%2;
+       /* Log.e("a",a+"");
         if (title=="null"){
             viewHolder.linearLayout_post_title.setVisibility(View.GONE);
         }else {
             viewHolder.title.setText(forum.getTitle());
-        }
+        }*/
+       Log.e("postAdapter",forum.toString());
         viewHolder.content.setText(forum.getContent());
-        viewHolder.like.setText(forum.getLike()+"");
+        viewHolder.like.setText(forum.getAwesome()+"");
         viewHolder.time.setText(forum.getTime());
         viewHolder.author.setText(forum.getAuthor());
-        viewHolder.active.setText(forum.getActive());
+        viewHolder.floor.setText(forum.getFloor());
+        viewHolder.active.setText(forum.getActive()+"");
         boolean essence  = forum.isEssence();
         if (essence){
             viewHolder.title.setTextColor(Color.parseColor("#00CD00"));
         }
 
-        if (a==0) {
+      /*  if (a==0) {
             viewHolder.linearLayout_post_head.setBackgroundResource(R.color.white_yellow);
             viewHolder.linearLayout_post_content.setBackgroundResource(R.color.white_yellow);
             viewHolder.linearLayout_post_like.setBackgroundResource(R.color.white_yellow);
-        }
+        }*/
         String head = Tools.headUrl+"a/"+forum.getHead();
         Log.e("head",head);
         Glide.with(mcontext).load(head).placeholder(R.drawable.main_my).into(viewHolder.head);

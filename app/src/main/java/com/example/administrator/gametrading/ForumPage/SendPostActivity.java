@@ -2,6 +2,7 @@ package com.example.administrator.gametrading.ForumPage;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.administrator.gametrading.Bean.Forum;
+import com.example.administrator.gametrading.MyCenterPage.LoginActivity;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.Service.PostService;
 import com.example.administrator.gametrading.util.SessionUtil;
@@ -28,14 +31,20 @@ public class SendPostActivity extends AppCompatActivity {
     private String Cookie="";
     private String image;
     private Forum forum;
+    private String TAG = "SendPostActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_post);
-        Cookie = new SessionUtil(context).GetSession();
-        Log.e("Cookie",""+Cookie);
 
+        Cookie = new SessionUtil(getApplicationContext()).GetSession();
+        Log.e("Cookie", "" + Cookie);
+        if (Cookie==null){
+            Toast.makeText(context,"请先登录",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(SendPostActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
         initView();
         initData();
     }
@@ -80,6 +89,7 @@ public class SendPostActivity extends AppCompatActivity {
         forum.setTitle(title);
         forum.setContent(content);
         forum.setTime(time);
-        forum.setAuthor(Cookie);
+        String cookie = Cookie.substring(5);
+        forum.setAuthor(cookie);
     }
 }

@@ -11,15 +11,6 @@ public class Order implements Serializable {
     private String receiver;
     private String date;
 
-    public Order(String userName, String totalPrice, String address, String phone, String receiver, String date) {
-        this.userName = userName;
-        this.totalPrice = totalPrice;
-        this.address = address;
-        this.phone = phone;
-        this.receiver = receiver;
-        this.date = date;
-    }
-
     public String getUserName() {
         return userName;
     }

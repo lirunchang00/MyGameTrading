@@ -22,6 +22,7 @@ import com.example.administrator.gametrading.Bean.Forum;
 import com.example.administrator.gametrading.MainPage.LazyLoadBaseFragment;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.Service.PostService;
+import com.example.administrator.gametrading.util.SpacesItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,13 +52,13 @@ public class AllFragment extends LazyLoadBaseFragment {
     private void initData() {
         new PostService().allPost(getActivity(),mForumList,forumViewAdapter);
 
-        floating_btn_main.setOnClickListener(new View.OnClickListener() {
+      /*  floating_btn_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(getActivity(),SendPostActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }
@@ -69,12 +70,11 @@ public class AllFragment extends LazyLoadBaseFragment {
 
     @Override
     protected void initView(View rootView) {
-        floating_btn_main = (FloatingActionButton )view.findViewById(R.id.floating_btn_main);
-
         recyclerView = (RecyclerView)view.findViewById(R.id.forum_all_rview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new SpacesItemDecoration(10));
         forumViewAdapter = new ForumViewAdapter(getActivity(),mForumList);
         recyclerView.setAdapter(forumViewAdapter);
     }

@@ -7,15 +7,17 @@
     android:layout_height="wrap_content"
     android:showDividers = "end"
     android:orientation="horizontal"
+    android:background="@drawable/layout_frame"
     >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
-        android:textSize="20sp"
-        android:textColor="#da0000"
+        android:textSize="18sp"
+        android:textColor="#e14444"
         android:text="回复："
+        android:background="@drawable/underline"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,11 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="#da0000"
+            android:textColor="#e14444"
             android:text="万一中了呢"
+            android:background="@drawable/underline"
             />
         <TextView
             android:id="@+id/repeat_post_title"

@@ -17,6 +17,7 @@ import com.example.administrator.gametrading.Bean.Forum;
 import com.example.administrator.gametrading.MainPage.LazyLoadBaseFragment;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.Service.PostService;
+import com.example.administrator.gametrading.util.SpacesItemDecoration;
 
 import java.util.ArrayList;
 
@@ -52,6 +53,7 @@ public class EssenceFragment extends LazyLoadBaseFragment{
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new SpacesItemDecoration(10));
         forumViewAdapter = new ForumViewAdapter(getActivity(),mForumList);
         recyclerView.setAdapter(forumViewAdapter);
     }

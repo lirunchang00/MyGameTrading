@@ -34,12 +34,6 @@
             android:drawableTop="@drawable/main_shop"
             />
         <RadioButton
-            android:id="@+id/main_shop_car"
-            style="@style/tab_menu_item"
-            android:text="@string/shop_car"
-            android:drawableTop="@drawable/main_shop_car"
-             />
-        <RadioButton
             android:id="@+id/main_my"
             style="@style/tab_menu_item"
             android:text="@string/my"

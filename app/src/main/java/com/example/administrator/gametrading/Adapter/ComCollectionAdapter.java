@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -63,8 +64,10 @@ public class ComCollectionAdapter extends RecyclerView.Adapter<ComCollectionAdap
         viewHolder.comCollectionSolder.setText(collectionBean.getSolder());
         String pic = Tools.headUrl+"a/"+collectionBean.getImage();
         Glide.with(context).load(pic).placeholder(R.mipmap.picc).into(viewHolder.comCollectionImage);
-        String head = Tools.headUrl+"a/"+collectionBean.getImage();
-        Glide.with(context).load(pic).placeholder(R.drawable.main_my).into(viewHolder.comCollectionHead);
+        String head = Tools.headUrl+"a/"+collectionBean.getHead();
+        Log.e("pic",pic);
+        Log.e("head",head);
+        Glide.with(context).load(head).placeholder(R.drawable.main_my).into(viewHolder.comCollectionHead);
     }
 
     @Override

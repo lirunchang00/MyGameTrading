@@ -16,11 +16,11 @@ import com.example.administrator.gametrading.MainPage.ShopFragment;
 
 public class ViewPageAdapter extends FragmentPagerAdapter{
 
-    private final int PAGER_COUNT = 5;
+    private final int PAGER_COUNT = 4;
     private ForumFragment forumFragment =null;
     private IllustrationFragment illustrationFragment = null;
     private ShopFragment shopFragment = null;
-    private ShopCarFragment shopCarFragment = null;
+  //  private ShopCarFragment shopCarFragment = null;
     private MyFragment myFragment = null;
 
 
@@ -28,7 +28,7 @@ public class ViewPageAdapter extends FragmentPagerAdapter{
         super(fm);
         forumFragment = new ForumFragment();
         illustrationFragment = new IllustrationFragment();
-        shopCarFragment = new ShopCarFragment();
+       // shopCarFragment = new ShopCarFragment();
         shopFragment = new ShopFragment();
         myFragment = new MyFragment();
     }
@@ -58,10 +58,10 @@ public class ViewPageAdapter extends FragmentPagerAdapter{
             case MainActivity.PAGE_THREE:
                 fragment=shopFragment;
                 break;
-            case MainActivity.PAGE_FOUR:
+          /*  case MainActivity.PAGE_FOUR:
                 fragment=shopCarFragment;
-                break;
-            case MainActivity.PAGE_FIVE:
+                break;*/
+            case MainActivity.PAGE_FOUR:
                 fragment=myFragment;
                 break;
         }

@@ -24,7 +24,9 @@ import java.util.Map;
 
 public class PostService implements PostInter {
 
-
+    /**
+     *全部帖子
+     */
     @Override
     public void allPost(Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter) {
         //实例一个请求序列
@@ -70,7 +72,9 @@ public class PostService implements PostInter {
     }
 
 
-
+    /**
+     *精华帖子
+     */
     @Override
     public void essencePost(final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter) {
         //实例一个请求序列
@@ -114,6 +118,9 @@ public class PostService implements PostInter {
         requestQueue.add(stringRequest);
     }
 
+    /**
+     *发帖子
+     */
     @Override
     public void sendPost(final Forum forum,final Context context) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -158,6 +165,9 @@ public class PostService implements PostInter {
         requestQueue.add(stringRequest);
     }
 
+    /**
+     *一个贴子中的回复
+     */
     @Override
     public void showRepeatPost(final Context context, ArrayList arrayList, RecyclerView.Adapter adapter,final Forum forum) {
         //实例一个请求序列
@@ -165,7 +175,8 @@ public class PostService implements PostInter {
         //创建一个请求地址
         String url = Tools.showPostUrl;
         Log.e("cookie",url+"");
-        final String  id =String.valueOf(forum.getId());
+        final String  id =String.valueOf(forum.getPostid());
+        final String author = forum.getAuthor();
         final PostHandler postHandler = new PostHandler(context,arrayList,adapter);
         /**
          * Request.Method.POST : 请求方式
@@ -201,6 +212,7 @@ public class PostService implements PostInter {
                 Map<String , String> map = new HashMap<String, String>();
                 //组装我们的请求信息
                 map.put("id", id);
+                map.put("author",author);
                 return map;
             }
         };
@@ -208,6 +220,9 @@ public class PostService implements PostInter {
         requestQueue.add(stringRequest);
     }
 
+    /**
+     *主题帖子
+     */
     @Override
     public void showPost(Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter, Forum forum) {
         //实例一个请求序列
@@ -215,7 +230,10 @@ public class PostService implements PostInter {
         //创建一个请求地址
         String url = Tools.showPost;
         Log.e("cookie",url+"");
-        final String  id =String.valueOf(forum.getId());
+        final String  id =String.valueOf(forum.getPostid());
+        final String author = forum.getAuthor();
+        Log.e("cookie",id+"");
+        Log.e("cookie",author+"");
         final PostHandler postHandler = new PostHandler(context,arrayList,arrayAdapter);
         /**
          * Request.Method.POST : 请求方式
@@ -251,6 +269,7 @@ public class PostService implements PostInter {
                 Map<String , String> map = new HashMap<String, String>();
                 //组装我们的请求信息
                 map.put("id", id);
+                map.put("author",author);
                 return map;
             }
         };
@@ -258,7 +277,9 @@ public class PostService implements PostInter {
         requestQueue.add(stringRequest);
     }
 
-
+    /**
+     *我的回复帖子
+     */
     @Override
     public void repeatPost(Context context,final Forum forum) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -298,6 +319,122 @@ public class PostService implements PostInter {
                 map.put("floor",forum.getFloor());
                 map.put("time",forum.getTime());
                 map.put("postid",String.valueOf(forum.getPostid()));
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    /**
+     *我的帖子
+     */
+    @Override
+    public void myPost(final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String url = Tools.myPost;
+        final PostHandler postHandler = new PostHandler(context,arrayList,arrayAdapter);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("str",response);
+                Message message = new Message();
+                message.obj=response;
+                message.arg1=7;
+                postHandler.handlemessage(message);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String cookie =new SessionUtil(context).GetSession();
+                Log.e("cookie",cookie+"");
+                if (!cookie.equals("")){
+                    HashMap<String,String> headers = new HashMap<String,String>();
+                    headers.put("cookie",cookie);
+                    return headers;
+                }else {
+                    return super.getHeaders();
+                }
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    /**
+     *我的回复
+     */
+    @Override
+    public void myRepeat(final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String url = Tools.myRepeat;
+        final PostHandler postHandler = new PostHandler(context,arrayList,arrayAdapter);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("str",response);
+                Message message = new Message();
+                message.obj=response;
+                message.arg1=8;
+                postHandler.handlemessage(message);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String cookie =new SessionUtil(context).GetSession();
+                Log.e("cookie",cookie+"");
+                if (!cookie.equals("")){
+                    HashMap<String,String> headers = new HashMap<String,String>();
+                    headers.put("cookie",cookie);
+                    return headers;
+                }else {
+                    return super.getHeaders();
+                }
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void searchPost(final String text, final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String url = Tools.searchPost;
+        final PostHandler postHandler =new PostHandler(context,arrayList,arrayAdapter);
+        Log.e("text",text);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("str",response);
+                Message message = new Message();
+                message.obj=response;
+                message.arg1=9;
+                postHandler.handlemessage(message);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            protected Map<String, String> getParams() throws AuthFailureError {
+                //实例一个map对象
+                Map<String, String> map = new HashMap<String, String>();
+                //组装我们的请求信息
+                map.put("text",text);
                 return map;
             }
         };

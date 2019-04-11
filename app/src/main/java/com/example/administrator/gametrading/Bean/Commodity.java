@@ -27,6 +27,16 @@ public class Commodity implements Serializable {
     private String secretPhone;
     private String phone;
     private String qq;
+    private String email;
+    private String status;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getAccount() {
         return account;
@@ -188,6 +198,14 @@ public class Commodity implements Serializable {
         this.active = active;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Commodity{" +
@@ -211,6 +229,8 @@ public class Commodity implements Serializable {
                 ", secretPhone='" + secretPhone + '\'' +
                 ", phone='" + phone + '\'' +
                 ", qq='" + qq + '\'' +
+                ", email='" + email + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 /*@Override

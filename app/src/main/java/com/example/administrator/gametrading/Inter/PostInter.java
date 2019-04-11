@@ -14,4 +14,8 @@ public interface PostInter {
     void showRepeatPost(Context context,ArrayList arrayList,RecyclerView.Adapter arrayAdapter,Forum forum);
     void showPost(Context context,ArrayList arrayList,RecyclerView.Adapter arrayAdapter,Forum forum);
     void repeatPost(Context context,Forum forum);
+    void myPost(final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
+    void myRepeat(final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
+    void searchPost(final String text,final Context context,ArrayList arrayList,RecyclerView.Adapter arrayAdapter);
+
 }

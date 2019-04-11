@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.example.administrator.gametrading.Adapter.ForumAdapter;
 import com.example.administrator.gametrading.Adapter.ViewPageAdapter;
 import com.example.administrator.gametrading.ForumPage.AllFragment;
 import com.example.administrator.gametrading.ForumPage.EssenceFragment;
+import com.example.administrator.gametrading.ForumPage.PostSearchActivity;
 import com.example.administrator.gametrading.ForumPage.SendPostActivity;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.util.myViewPager;
@@ -34,6 +36,7 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
     private ViewPager viewPager;
     private Button all_forum,essence_forum;
     private FloatingActionButton zhiding,to_send_post;
+    private LinearLayout top_forum;
 
     public static final int PAGE_ONE =   0;
     public static final int PAGE_TWO =   1;
@@ -57,6 +60,7 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
 
     @Override
     protected void initView(View rootView) {
+        top_forum = (LinearLayout)view.findViewById(R.id.top_forum);
         viewPager = (ViewPager)view.findViewById(R.id.forum_viewpager);
         list = new ArrayList<>();
         all_forum = (Button)view.findViewById(R.id.all_forum);
@@ -68,6 +72,7 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
         essence_forum.setOnClickListener(this);
         to_send_post.setOnClickListener(this);
         zhiding.setOnClickListener(this);
+        top_forum.setOnClickListener(this);
 
         list.add(new AllFragment());
         list.add(new EssenceFragment());
@@ -136,7 +141,11 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
                 startActivity(intent);
                 break;
             case R.id.zhiding:
-
+                    //刷新
+                break;
+            case R.id.top_forum:
+                Intent intent1= new Intent(getActivity(), PostSearchActivity.class);
+                startActivity(intent1);
                 break;
         }
     }

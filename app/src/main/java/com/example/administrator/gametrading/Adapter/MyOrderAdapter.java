@@ -66,9 +66,8 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-            final OrderBean orderBean = new OrderBean();
 
-
+            final OrderBean orderBean =list.get(i);
             viewHolder.myOrderComName.setText(orderBean.getComName());
             viewHolder.myOrderPrice.setText(orderBean.getPrice());
             viewHolder.myOrderStatus.setText(orderBean.getStatus());
@@ -95,6 +94,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
             myOrderComName = (TextView)itemView.findViewById(R.id.my_order_comName);
             myOrderPrice = (TextView)itemView.findViewById(R.id.my_order_price);
             myOrderStatus = (TextView)itemView.findViewById(R.id.order_status);
+            myOrderImage = (ImageView) itemView.findViewById(R.id.my_order_image);
             myOrderSolder = (Button)itemView.findViewById(R.id.order_call_solder);
             myOrderAsses = (Button)itemView.findViewById(R.id.order_assess);
             myOrderPop = (Button)itemView.findViewById(R.id.order_pop);

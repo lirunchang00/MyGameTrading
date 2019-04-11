@@ -24,14 +24,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Map;
 
 public class ShopHandler extends Handler{
 
     private Context context;
-    private ArrayList arrayList;
+    private ArrayList arrayList ;
     private RecyclerView.Adapter arrayAdapter;
+    private Map<String,String> map;
     public ShopHandler(Context context){
         this.context  = context;
+    }
+    public ShopHandler(Context context,Map<String,String> map){
+        this.context  = context;
+        this.map = map;
     }
     public ShopHandler(Context context,ArrayList arrayList){
         this.context  = context;
@@ -114,10 +120,11 @@ public class ShopHandler extends Handler{
                         commodity.setActive(jsonObject.getInt("active"));
                         commodity.setComImage(jsonObject.getString("comImage"));
                         commodity.setComMethod(jsonObject.getString("comMethod"));
+                        commodity.setType(jsonObject.getString("type"));
                         commodity.setComServer(jsonObject.getString("comServer"));
                         commodity.setOperating(jsonObject.getString("operating"));
+                        Log.e("commodity",commodity.toString()+"");
                         arrayList.add(commodity);
-                        Log.e("arrayList",arrayList+"");
                     }
                 }catch(Exception ex){
                     ex.printStackTrace();

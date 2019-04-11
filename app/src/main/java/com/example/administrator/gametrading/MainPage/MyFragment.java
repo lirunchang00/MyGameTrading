@@ -32,7 +32,7 @@ public class MyFragment extends LazyLoadBaseFragment {
     public MyFragment(){}
     private ImageView head;
     private RelativeLayout update_msg,update_password,my_post,my_repeat,my_post_collection,my_solder,my_com_collection,my_order;
-    private Button login;
+    private TextView login;
     private TextView my_name;
     private String Cookie="";
     private View view;
@@ -193,7 +193,7 @@ public class MyFragment extends LazyLoadBaseFragment {
         my_com_collection = (RelativeLayout)view.findViewById(R.id.my_com_collection);
         my_solder = (RelativeLayout)view.findViewById(R.id.my_solder);
         my_order= (RelativeLayout)view.findViewById(R.id.my_order);
-        login = (Button)view.findViewById(R.id.login_register);
+        login = (TextView)view.findViewById(R.id.login_register);
         my_name = (TextView)view.findViewById(R.id.my_name);
     }
 }

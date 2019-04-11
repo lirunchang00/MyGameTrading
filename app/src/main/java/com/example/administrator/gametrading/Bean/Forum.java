@@ -15,11 +15,30 @@ public class Forum implements Parcelable{
     private String content;
     private String image;
     private String head;
-    private String active;
-    private int like;
+    private int active;
+    private int awesome;
     private String floor;
     private boolean essence;
     private int postid;
+
+    @Override
+    public String toString() {
+        return "Forum{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", time='" + time + '\'' +
+                ", repeat='" + repeat + '\'' +
+                ", content='" + content + '\'' +
+                ", image='" + image + '\'' +
+                ", head='" + head + '\'' +
+                ", active='" + active + '\'' +
+                ", like=" + awesome +
+                ", floor='" + floor + '\'' +
+                ", essence=" + essence +
+                ", postid=" + postid +
+                '}';
+    }
 
     public int getPostid() {
         return postid;
@@ -47,8 +66,8 @@ public class Forum implements Parcelable{
         content = in.readString();
         image = in.readString();
         head = in.readString();
-        active = in.readString();
-        like = in.readInt();
+        active = in.readInt();
+        awesome = in.readInt();
         floor = in.readString();
         postid = in.readByte();
         essence = in.readByte() != 0;
@@ -66,8 +85,8 @@ public class Forum implements Parcelable{
             forum.content = in.readString();
             forum.image = in.readString();
             forum.head = in.readString();
-            forum.active = in.readString();
-            forum.like = in.readInt();
+            forum.active = in.readInt();
+            forum.awesome = in.readInt();
             forum.floor = in.readString();
             forum.postid = in.readInt();
             forum.essence = in.readByte() != 0;
@@ -144,12 +163,12 @@ public class Forum implements Parcelable{
         this.image = image;
     }
 
-    public int getLike() {
-        return like;
+    public int getAwesome() {
+        return awesome;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setAwesome(int awesome) {
+        this.awesome = awesome;
     }
 
     public String getFloor() {
@@ -168,11 +187,11 @@ public class Forum implements Parcelable{
         this.essence = essence;
     }
 
-    public String getActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(int active) {
         this.active = active;
     }
 
@@ -191,8 +210,8 @@ public class Forum implements Parcelable{
         dest.writeString(content);
         dest.writeString(image);
         dest.writeString(head);
-        dest.writeString(active);
-        dest.writeInt(like);
+        dest.writeInt(active);
+        dest.writeInt(awesome);
         dest.writeString(floor);
         dest.writeInt(postid);
         dest.writeByte((byte) (essence ? 1 : 0));
