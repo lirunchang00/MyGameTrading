@@ -101,6 +101,37 @@ public class LoginService implements LoginInter{
         requestQueue.add(stringRequest);
     }
 
+    @Override
+    public void getPmg(final String user, final Context context) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        final LoginHandler loginHandler = new LoginHandler(context);
+
+        String url = Tools.getPmg;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Message message = new Message();
+                message.arg1 = 2;
+                message.obj=response;
+                loginHandler.handlerMessage(message);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String ,String > map = new HashMap<String ,String>();
+                map.put("user",user);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
 
 
     @Override

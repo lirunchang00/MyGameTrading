@@ -17,4 +17,6 @@ public interface OrderInter {
     void mySolder(Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
 
     void comDetail(Context context,Commodity commodity);
+
+    void makeOrder(Commodity commodity,Context context);
 }

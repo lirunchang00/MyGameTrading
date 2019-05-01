@@ -1,12 +1,16 @@
 package com.example.administrator.gametrading.Bean;
 
-public class Girls {
+import java.io.Serializable;
+
+public class Girls implements Serializable{
     private String Name;        //名字
-    private int No;             //编号
+    private String No;             //编号
     private int Start;          //星级
     private String Type;        //种类
+    private String TypePic;     //种类图片
     private String Portrait;    //立绘
-    private String Head;
+    private String BreakPortrait;//大破
+    private String Head;        //头像
     private int Damage;         //伤害
     private int Hit;            //命中
     private int Avoid;          //回避
@@ -17,18 +21,23 @@ public class Girls {
     private int Piercing;       //穿甲
     private int Armor;          //护甲
     private int Chain;          //弹链
+    private String Method;      //获取方式
     private String Aura;        //光环
+    private String AuraIntroduction;//光环介绍
     private String Introduction;//简介
     private String Skin;        //皮肤
     private String Painter;     //画师
     private String Dubbing;     //配音
-    private String Skill;       //技能
+    private String SkillIntroduction; //技能简介
+    private String SkillName;       //技能
+    private String SkillCD;     //技能CD
+    private String SkillPic;    //技能图片
 
     /**
     *AR HG 构造方法
     * */
     public Girls(){}
-    public Girls(String Name, int No, int Start, String Type, String Portrait,
+    /*public Girls(String Name, int No, int Start, String Type, String Portrait,
                  int Damage, int Hit, int Avoid, int Shooting, int Hp,
                  int CirtRate, int CirtDamage,int Piercing,int Armor,int Chain, String Aura,
                  String Introduction, String Skin, String Painter, String Dubbing, String Skill)
@@ -54,7 +63,7 @@ public class Girls {
         this.Painter = Painter;
         this.Dubbing = Dubbing;
         this.Skill = Skill;
-    }
+    }*/
 
     public String getHead() {
         return Head;
@@ -72,11 +81,11 @@ public class Girls {
         this.Name = name;
     }
 
-    public int getNo() {
+    public String getNo() {
         return No;
     }
 
-    public void setNo(int no) {
+    public void setNo(String no) {
         No = no;
     }
 
@@ -224,11 +233,104 @@ public class Girls {
         Dubbing = dubbing;
     }
 
-    public String getSkill() {
-        return Skill;
+    public String getTypePic() {
+        return TypePic;
     }
 
-    public void setSkill(String skill) {
-        Skill = skill;
+    public void setTypePic(String typePic) {
+        TypePic = typePic;
     }
+
+    @Override
+    public String toString() {
+        return "Girls{" +
+                "Name='" + Name + '\'' +
+                ", No='" + No + '\'' +
+                ", Start=" + Start +
+                ", Type='" + Type + '\'' +
+                ", TypePic='" + TypePic + '\'' +
+                ", Portrait='" + Portrait + '\'' +
+                ", BreakPortrait='" + BreakPortrait + '\'' +
+                ", Head='" + Head + '\'' +
+                ", Damage=" + Damage +
+                ", Hit=" + Hit +
+                ", Avoid=" + Avoid +
+                ", Shooting=" + Shooting +
+                ", Hp=" + Hp +
+                ", CirtRate=" + CirtRate +
+                ", CirtDamage=" + CirtDamage +
+                ", Piercing=" + Piercing +
+                ", Armor=" + Armor +
+                ", Chain=" + Chain +
+                ", Method='" + Method + '\'' +
+                ", Aura='" + Aura + '\'' +
+                ", AuraIntroduction='" + AuraIntroduction + '\'' +
+                ", Introduction='" + Introduction + '\'' +
+                ", Skin='" + Skin + '\'' +
+                ", Painter='" + Painter + '\'' +
+                ", Dubbing='" + Dubbing + '\'' +
+                ", SkillIntroduction='" + SkillIntroduction + '\'' +
+                ", SkillName='" + SkillName + '\'' +
+                ", SkillCD='" + SkillCD + '\'' +
+                ", SkillPic='" + SkillPic + '\'' +
+                '}';
+    }
+
+    public String getBreakPortrait() {
+        return BreakPortrait;
+    }
+
+    public void setBreakPortrait(String breakPortrait) {
+        BreakPortrait = breakPortrait;
+    }
+
+    public String getMethod() {
+        return Method;
+    }
+
+    public void setMethod(String method) {
+        Method = method;
+    }
+
+    public String getAuraIntroduction() {
+        return AuraIntroduction;
+    }
+
+    public void setAuraIntroduction(String auraIntroduction) {
+        AuraIntroduction = auraIntroduction;
+    }
+
+    public String getSkillIntroduction() {
+        return SkillIntroduction;
+    }
+
+    public void setSkillIntroduction(String skillIntroduction) {
+        SkillIntroduction = skillIntroduction;
+    }
+
+    public String getSkillName() {
+        return SkillName;
+    }
+
+    public void setSkillName(String skillName) {
+        SkillName = skillName;
+    }
+
+    public String getSkillCD() {
+        return SkillCD;
+    }
+
+    public void setSkillCD(String skillCD) {
+        SkillCD = skillCD;
+    }
+
+    public String getSkillPic() {
+        return SkillPic;
+    }
+
+    public void setSkillPic(String skillPic) {
+        SkillPic = skillPic;
+    }
+
+
 }

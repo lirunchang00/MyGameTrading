@@ -43,7 +43,12 @@ public class RepeatPostActivity extends AppCompatActivity {
 
     private void initData() {
 
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         send_repeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

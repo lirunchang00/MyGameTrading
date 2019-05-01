@@ -1,5 +1,7 @@
 package com.example.administrator.gametrading.MyCenterPage;
 
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +27,7 @@ public class MyRepeatActivity extends AppCompatActivity {
     private CollectionBean collectionBean;
     private ArrayList<Forum> mForumList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +43,25 @@ public class MyRepeatActivity extends AppCompatActivity {
     }
     private void initData() {
         new PostService().myRepeat(MyRepeatActivity.this,mForumList,myRepeatAdapter);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mForumList.clear();
+                        recyclerView.removeAllViews();
+                        new PostService().myRepeat(MyRepeatActivity.this,mForumList,myRepeatAdapter);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },2000);
+
+            }
+        });
     }
 
     private void initView() {
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.my_repeat_refresh);
         back = (Button)findViewById(R.id.my_repeat_back);
         recyclerView = (RecyclerView)findViewById(R.id.my_repeat_recycleView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(MyRepeatActivity.this);

@@ -5,12 +5,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#ffffff">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/forum_all_rview"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/forum_all_refresh"
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/forum_all_rview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/to_send_post"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
-    </android.support.v7.widget.RecyclerView>
-
-
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@mipmap/sendpost"
+        android:backgroundTint="#7aaffa"
+        app:elevation="10dp"
+        android:layout_margin="15dp"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/zhiding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/to_send_post"
+        android:layout_alignParentBottom="true"
+        android:src="@mipmap/zhiding"
+        android:backgroundTint="#7aaffa"
+        app:elevation="10dp"
+        android:layout_marginBottom="15dp"
+        />
 </RelativeLayout>

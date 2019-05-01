@@ -47,6 +47,12 @@ public class SendPostActivity extends AppCompatActivity {
         }
         initView();
         initData();
+        send_post_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initView() {

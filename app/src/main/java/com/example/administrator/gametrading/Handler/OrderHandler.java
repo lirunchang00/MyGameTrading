@@ -110,6 +110,8 @@ public class OrderHandler extends Handler{
                     ex.printStackTrace();
                 }
                 break;
+            case 4:
+                break;
         }
     }
 }

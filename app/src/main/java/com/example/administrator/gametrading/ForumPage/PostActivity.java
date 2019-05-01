@@ -11,16 +11,20 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.gametrading.Adapter.ForumViewAdapter;
 import com.example.administrator.gametrading.Adapter.PostAdapter;
+import com.example.administrator.gametrading.Bean.CollectionBean;
 import com.example.administrator.gametrading.Bean.Forum;
 import com.example.administrator.gametrading.Bean.PostCollection;
 import com.example.administrator.gametrading.R;
+import com.example.administrator.gametrading.Service.CollectionService;
 import com.example.administrator.gametrading.Service.PostService;
 import com.example.administrator.gametrading.Tools;
 import com.example.administrator.gametrading.util.DateUtil;
@@ -44,6 +48,7 @@ public class PostActivity extends AppCompatActivity {
     private FloatingActionButton repeatBtn;
     private LinearLayout linearLayout;
     private TextView post_title_activity;
+    private ToggleButton post_collection_btn;
     int postid;
     String author,title;
     boolean essence;
@@ -106,11 +111,33 @@ public class PostActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        post_collection_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String postId = null;
+                if (intent.getParcelableExtra("forum")!=null) {
+                    forum = (Forum) intent.getParcelableExtra("forum");
+                    postid = forum.getPostid();
+                    postId = String.valueOf(postid);
+                }else if (intent.getParcelableExtra("postCollection")!=null){
+                    postCollection = (PostCollection)intent.getParcelableExtra("postCollection");
+                    postid = postCollection.getPostId();
+                    postId = String.valueOf(postid);
+                }
+                if (isChecked){
+                    new CollectionService().addComCollection(PostActivity.this,postId);
+                    post_collection_btn.setTextOn("取消收藏");
+                }else {
+                    new CollectionService().deleteComCollection(PostActivity.this,postId);
+                    post_collection_btn.setTextOff("添加收藏");
+                }
+            }
+        });
 
     }
 
     private void initView() {
+        post_collection_btn = (ToggleButton)findViewById(R.id.post_collection_btn);
         post_title_activity = (TextView) findViewById(R.id.post_title_activity);
         back = (ImageView)findViewById(R.id.post_back);
         mRecyclerView = (RecyclerView)findViewById(R.id.forum_post_rview);

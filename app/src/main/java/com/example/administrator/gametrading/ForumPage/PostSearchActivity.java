@@ -1,6 +1,7 @@
 package com.example.administrator.gametrading.ForumPage;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.administrator.gametrading.Adapter.ForumViewAdapter;
@@ -29,6 +31,7 @@ public class PostSearchActivity extends AppCompatActivity {
     private ArrayList<Forum> mForumList = new ArrayList<>();
     private ForumViewAdapter forumViewAdapter;
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,7 @@ public class PostSearchActivity extends AppCompatActivity {
         post_search_enter =(ImageView)this.findViewById(R.id.post_search_enter);
         post_search_delete =(ImageView)this.findViewById(R.id.post_search_delete);
         post_search_editText =(EditText)this.findViewById(R.id.post_search_editText);
-
+        progressBar = (ProgressBar)this.findViewById(R.id.post_search_bar);
 
         recyclerView = (RecyclerView)this.findViewById(R.id.post_search_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(PostSearchActivity.this);
@@ -94,13 +97,22 @@ public class PostSearchActivity extends AppCompatActivity {
         post_search_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(post_search_editText.getText().toString().trim())){
-                    Toast.makeText(PostSearchActivity.this,"请输入搜索内容",Toast.LENGTH_LONG).show();
-                }else {
-                    String a = post_search_editText.getText().toString();
-                    Log.e("a",a);
-                    new PostService().searchPost(a,PostSearchActivity.this,mForumList,forumViewAdapter);
-                }
+                progressBar.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mForumList.clear();
+                        recyclerView.removeAllViews();
+                        if (TextUtils.isEmpty(post_search_editText.getText().toString().trim())){
+                            Toast.makeText(PostSearchActivity.this,"请输入搜索内容",Toast.LENGTH_LONG).show();
+                        }else {
+                            String a = post_search_editText.getText().toString();
+                            Log.e("a",a);
+                            new PostService().searchPost(a,PostSearchActivity.this,mForumList,forumViewAdapter);
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                },2000);
             }
         });
     }

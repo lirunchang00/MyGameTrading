@@ -11,4 +11,5 @@ import java.util.ArrayList;
 public interface GirlsInter {
     void add(Girls girls, Context context);
     void show(final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
+    void searchGirls(final String s,  Context context,ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
 }

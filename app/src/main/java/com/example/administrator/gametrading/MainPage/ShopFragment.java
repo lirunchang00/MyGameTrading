@@ -1,10 +1,13 @@
 package com.example.administrator.gametrading.MainPage;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -35,6 +38,8 @@ public class ShopFragment extends LazyLoadBaseFragment {
     private View view;
     private Button to_add_com;
     private LinearLayout top_shop;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
 
     public ShopFragment(){}
 
@@ -51,6 +56,21 @@ public class ShopFragment extends LazyLoadBaseFragment {
 
     private void initData() {
         new ShopService().allCom(getActivity(),commodityList,adapter);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        commodityList.clear();
+                        recyclerView.removeAllViews();
+                        new ShopService().allCom(getActivity(),commodityList,adapter);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },2000);
+
+            }
+        });
 
     }
 
@@ -80,9 +100,11 @@ public class ShopFragment extends LazyLoadBaseFragment {
 
     @Override
     protected void initView(View rootView) {
+        swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.shop_refresh);
+        swipeRefreshLayout.setColorSchemeColors(Color.RED,Color.BLUE,Color.GREEN);
         to_add_com = (Button)view.findViewById(R.id.to_add_com);
         top_shop = (LinearLayout)view.findViewById(R.id.top_shop);
-        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.shop_recyclerview);
+        recyclerView = (RecyclerView)view.findViewById(R.id.shop_recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);

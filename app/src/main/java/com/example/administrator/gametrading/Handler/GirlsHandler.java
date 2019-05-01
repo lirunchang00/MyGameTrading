@@ -14,11 +14,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class GirlsHandler extends Handler{
     private Context context;
-    private ArrayList arrayList;
+    private ArrayList<Girls> arrayList;
     private String gethead;
+    private ArrayList<Girls> old = new ArrayList<>();
     private RecyclerView.Adapter arrayAdapter;
 
     public GirlsHandler(Context context){
@@ -54,6 +58,8 @@ public class GirlsHandler extends Handler{
                     e.printStackTrace();
                 }
                 break;
+
+                //加载图鉴
             case 2:
                 Log.e("message",msg.obj.toString());
                 try{
@@ -65,27 +71,33 @@ public class GirlsHandler extends Handler{
                     for(int index=0; index< jsonArray.length();index++){
                         JSONObject jsonObject = jsonArray.getJSONObject(index);
                         Girls girls = new Girls();
-                        girls.setNo(jsonObject.getInt("no"));
+                        girls.setNo(jsonObject.getString("no"));
                         girls.setName(jsonObject.getString("name"));
-                        girls.setType(jsonObject.getString("type"));
-                        girls.setStart(jsonObject.getInt("start"));
-                        girls.setDamage(jsonObject.getInt("damage"));
-                        girls.setAvoid(jsonObject.getInt("avoid"));
-                        girls.setHit(jsonObject.getInt("hit"));
-                        girls.setHp(jsonObject.getInt("hp" ));
-                        girls.setShooting(jsonObject.getInt("shooting"));
-                        girls.setArmor(jsonObject.getInt("armor"));
-                        girls.setChain(jsonObject.getInt("chain"));
-                        girls.setSkin(jsonObject.getString("skin"));
-                        girls.setPortrait(jsonObject.getString("portrait"));
-                        girls.setPainter(jsonObject.getString("painter"));
-                        girls.setCirtRate(jsonObject.getInt("cirtRate"));
-                        girls.setCirtDamage(jsonObject.getInt("cirtDamage"));
-                        girls.setIntroduction(jsonObject.getString("introduction"));
-                        girls.setPiercing(jsonObject.getInt("piercing"));
-                        girls.setAura(jsonObject.getString("aura"));
-                        girls.setDubbing(jsonObject.getString("dubbing"));
-                        girls.setSkill(jsonObject.getString("skill"));
+                        girls.setTypePic(jsonObject.getString("typePic"));
+                        girls.setHead(jsonObject.getString("head"));
+                        arrayList.add(girls);
+                    }
+                    if(arrayAdapter != null) {
+                        arrayAdapter.notifyDataSetChanged();
+                    }
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+                break;
+            case 3:
+                Log.e("message",msg.obj.toString());
+                try{
+                    //封装成jsonarray对象
+                    JSONArray jsonArray = new JSONArray(msg.obj.toString().trim());
+                    //String cookie=new ConnectViaSession(context).GetSession();
+                    //Log.e("cookie",cookie+"");
+                    //循环遍历我们的jsonobject
+                    for(int index=0; index< jsonArray.length();index++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(index);
+                        Girls girls = new Girls();
+                        girls.setNo(jsonObject.getString("no"));
+                        girls.setName(jsonObject.getString("name"));
+                        girls.setTypePic(jsonObject.getString("typePic"));
                         girls.setHead(jsonObject.getString("head"));
                         arrayList.add(girls);
                     }

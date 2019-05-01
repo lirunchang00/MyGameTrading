@@ -181,6 +181,17 @@ public class OrderService implements OrderInter{
                 Toast.makeText(context,"网络访问出错",Toast.LENGTH_LONG).show();
             }
         }){
+            public Map<String,String> getHeaders()throws AuthFailureError {
+                String cookie =new SessionUtil(context).GetSession();
+                Log.e("cookie",cookie+"");
+                if (!cookie.equals("")){
+                    HashMap<String,String> headers = new HashMap<String,String>();
+                    headers.put("cookie",cookie);
+                    return headers;
+                }else {
+                    return super.getHeaders();
+                }
+            }
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<String ,String>();
@@ -201,6 +212,55 @@ public class OrderService implements OrderInter{
                 map.put("secretPhone",commodity.getSecretPhone());
                 map.put("phone",commodity.getPhone());
                 map.put("qq",commodity.getQq());
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void makeOrder(final Commodity commodity,final Context context) {
+        final RequestQueue requestQueue = Volley.newRequestQueue(context);
+        Log.e("makeOrder",commodity.toString());
+        String url = Tools.makeOrder;
+
+        final OrderHandler orderHandler = new OrderHandler(context);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+               /* Message message = new Message();
+                message.obj = response;
+                message.arg1 =4;
+                orderHandler.handleMessage(message);*/
+               Log.e("makeroder","success");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context,"网络访问出错",Toast.LENGTH_LONG).show();
+            }
+        }){
+            public Map<String,String> getHeaders()throws AuthFailureError {
+                String cookie =new SessionUtil(context).GetSession();
+                Log.e("cookie",cookie+"");
+                if (!cookie.equals("")){
+                    HashMap<String,String> headers = new HashMap<String,String>();
+                    headers.put("cookie",cookie);
+                    return headers;
+                }else {
+                    return super.getHeaders();
+                }
+            }
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String ,String>();
+                map.put("comName", commodity.getComName());
+                map.put("clientPhone",commodity.getClientPhone());
+                map.put("comPrice",commodity.getComPrice());
+                map.put("comImage",commodity.getComImage());
+                map.put("email",commodity.getEmail());
                 return map;
             }
         };

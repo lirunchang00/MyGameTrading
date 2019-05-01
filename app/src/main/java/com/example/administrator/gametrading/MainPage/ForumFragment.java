@@ -65,13 +65,13 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
         list = new ArrayList<>();
         all_forum = (Button)view.findViewById(R.id.all_forum);
         essence_forum = (Button)view.findViewById(R.id.essence_forum);
-        zhiding = (FloatingActionButton)view.findViewById(R.id.zhiding);
-        to_send_post = (FloatingActionButton)view.findViewById(R.id.to_send_post);
+       // zhiding = (FloatingActionButton)view.findViewById(R.id.zhiding);
+        //to_send_post = (FloatingActionButton)view.findViewById(R.id.to_send_post);
 
         all_forum.setOnClickListener(this);
         essence_forum.setOnClickListener(this);
-        to_send_post.setOnClickListener(this);
-        zhiding.setOnClickListener(this);
+       // to_send_post.setOnClickListener(this);
+        //zhiding.setOnClickListener(this);
         top_forum.setOnClickListener(this);
 
         list.add(new AllFragment());
@@ -136,13 +136,13 @@ public class ForumFragment extends LazyLoadBaseFragment implements ViewPager.OnP
                 essence_forum.setBackgroundResource(R.drawable.all_forum_light);
                 viewPager.setCurrentItem(1);
                 break;
-            case R.id.to_send_post:
+           /* case R.id.to_send_post:
                 Intent intent =new Intent(getActivity(), SendPostActivity.class);
                 startActivity(intent);
                 break;
             case R.id.zhiding:
                     //刷新
-                break;
+                break;*/
             case R.id.top_forum:
                 Intent intent1= new Intent(getActivity(), PostSearchActivity.class);
                 startActivity(intent1);

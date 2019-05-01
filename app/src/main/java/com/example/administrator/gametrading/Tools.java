@@ -14,7 +14,7 @@ public class Tools {
 
     public static String registerurl = baseUrl+"register";
 
-    public static String girlsUrl = baseUrl+"getIndex";
+    public static String getIndex = baseUrl+"getIndex";
 
     public static String forumAllUrl = baseUrl+"getAllPost";
 
@@ -38,6 +38,8 @@ public class Tools {
 
     public static String imageurl=baseUrl+"uploadMyImage";
 
+    public static String headurl=baseUrl+"headurl";
+
     public static String comCollection=baseUrl+"comCollection";
 
     public static String showMyOrder=baseUrl+"showMyOrder";
@@ -55,4 +57,38 @@ public class Tools {
     public static String searchCom=baseUrl+"searchCom";
 
     public static String comDetail=baseUrl+"comDetail";
+
+    public static String girlsDetail=baseUrl+"girlsDetail";
+
+    public static String searchGirlsByType=baseUrl+"searchGirlsByType";
+
+    public static String searchGirlsByStart=baseUrl+"searchGirlsByStart";
+
+    public static String searchGirls=baseUrl+"searchGirls";
+
+    public static String getPmg=baseUrl+"getPmg";
+
+    public static String addindex=baseUrl+"addindex";
+
+    public static String deletePost=baseUrl+"deletePost";
+
+    public static String shenhe=baseUrl+"shenhe";
+
+    public static String deleteIndex=baseUrl+"deleteIndex";
+
+    public static String waitCom=baseUrl+"waitCom";
+
+    public static String makeOrder=baseUrl+"makeOrder";
+
+    public static String getOrder=baseUrl+"getOrder";
+
+    public static String getCom=baseUrl+"getCom";
+
+    public static String deleteComCollection=baseUrl+"deleteComCollection";
+
+    public static String addComCollection=baseUrl+"addComCollection";
+
+    public static String addPostCollection=baseUrl+"addPostCollection";
+
+    public static String deletePostCollection=baseUrl+"deletePostCollection";
 }

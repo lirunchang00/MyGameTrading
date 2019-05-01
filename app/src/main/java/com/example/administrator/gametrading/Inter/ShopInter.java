@@ -12,5 +12,6 @@ public interface ShopInter {
     void allCom(final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
     void showDetail(final Context context, String id, ArrayList<Commodity> list);
     void searchCom(String com,final Context context,ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
+    void waitCom(final Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
 }
 

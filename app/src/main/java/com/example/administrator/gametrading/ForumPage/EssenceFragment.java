@@ -1,8 +1,11 @@
 package com.example.administrator.gametrading.ForumPage;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +29,7 @@ public class EssenceFragment extends LazyLoadBaseFragment{
     private ArrayList<Forum> mForumList = new ArrayList<>();
     private ForumViewAdapter forumViewAdapter;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     public EssenceFragment(){}
     private static  final String TAG = EssenceFragment.class.getSimpleName();
     @Nullable
@@ -34,12 +38,26 @@ public class EssenceFragment extends LazyLoadBaseFragment{
         view =inflater.inflate(R.layout.fragment_forum_essence,container,false);
         initView(view);
         initData();
-        Log.e("EssenceFragment", "EssenceFragment");
         return view;
     }
 
     private void initData() {
         new PostService().essencePost(getActivity(),mForumList,forumViewAdapter);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mForumList.clear();
+                        recyclerView.removeAllViews();
+                        new PostService().essencePost(getActivity(),mForumList,forumViewAdapter);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },2000);
+                forumViewAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -49,6 +67,8 @@ public class EssenceFragment extends LazyLoadBaseFragment{
 
     @Override
     protected void initView(View rootView) {
+        swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.forum_essence_refresh);
+        swipeRefreshLayout.setColorSchemeColors(Color.RED,Color.BLUE,Color.GREEN);
         recyclerView = (RecyclerView)view.findViewById(R.id.forum_essence_rview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(OrientationHelper.VERTICAL);

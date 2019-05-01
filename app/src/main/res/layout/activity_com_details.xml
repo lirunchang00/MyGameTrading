@@ -367,17 +367,18 @@
         android:layout_height="40dp"
         android:background="#ffffff"
         android:layout_alignParentBottom="true">
-        <Button
+
+        <ToggleButton
             android:id="@+id/add_to_collection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="1dp"
-            android:background="@drawable/blue_enter_btn"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:text="添加收藏"
+            android:drawableStart="@drawable/collectionbtn"
+            android:textOff="添加收藏"
+            android:textOn="取消收藏"
+            android:background="@drawable/btn_frame"
+            android:layout_weight="1"
             />
         <Button
             android:id="@+id/to_buy"

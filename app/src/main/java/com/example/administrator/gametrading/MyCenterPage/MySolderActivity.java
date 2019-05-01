@@ -1,5 +1,7 @@
 package com.example.administrator.gametrading.MyCenterPage;
 
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +29,7 @@ public class MySolderActivity extends AppCompatActivity {
     private Commodity commodity;
     private ArrayList<Commodity> mCommodityList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +46,25 @@ public class MySolderActivity extends AppCompatActivity {
     }
     private void initData() {
         new OrderService().mySolder(MySolderActivity.this,mCommodityList,mySolderAdapter);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mCommodityList.clear();
+                        recyclerView.removeAllViews();
+                        new OrderService().mySolder(MySolderActivity.this,mCommodityList,mySolderAdapter);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },2000);
+
+            }
+        });
     }
 
     private void initView() {
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.my_solder_refresh);
         back = (Button)findViewById(R.id.my_solder_back);
         recyclerView = (RecyclerView)findViewById(R.id.my_solder_recycleView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(MySolderActivity.this);

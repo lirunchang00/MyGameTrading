@@ -12,4 +12,11 @@ public interface CollectionInter {
 
     void postCollection(Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter);
 
+    void deleteComCollection(Context context,String comId);
+
+    void addComCollection(Context context,String comId);
+
+    void deletePostCollection(Context context,String postId);
+
+    void addPostCollection(Context contextm,String postId);
 }

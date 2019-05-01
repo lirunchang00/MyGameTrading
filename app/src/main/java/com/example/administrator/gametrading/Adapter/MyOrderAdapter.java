@@ -17,6 +17,7 @@ import com.example.administrator.gametrading.Bean.OrderBean;
 import com.example.administrator.gametrading.R;
 import com.example.administrator.gametrading.ShoppingCarPage.ComDetailsActivity;
 import com.example.administrator.gametrading.ShoppingCarPage.OrderActivity;
+import com.example.administrator.gametrading.ShoppingCarPage.OrderDetailActivity;
 import com.example.administrator.gametrading.Tools;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
                     public void onClick(View v) {
                         int io = viewHolder.getAdapterPosition();
                         OrderBean orderBean = list.get(io);
-                        Intent intent = new Intent(context, OrderActivity.class);
+                        Intent intent = new Intent(context, OrderDetailActivity.class);
                         intent.putExtra("orderBean",orderBean);
                         context.startActivity(intent);
                     }

@@ -130,6 +130,52 @@ public class ShopHandler extends Handler{
                     ex.printStackTrace();
                 }
                 break;
+            case 3:
+                Log.e("message",msg.obj.toString());
+                try{
+                    //封装成jsonarray对象
+                    JSONArray jsonArray = new JSONArray(msg.obj.toString().trim());
+                    String cookie=new SessionUtil(context).GetSession();
+                    Log.e("cookie",cookie+"");
+                    //循环遍历我们的jsonobject
+                    for(int index=0; index< jsonArray.length();index++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(index);
+
+                        Commodity commodity = new Commodity();
+                        commodity.setComId(jsonObject.getInt("comId"));
+                        commodity.setComName(jsonObject.getString("comName"));
+                        commodity.setComContent(jsonObject.getString("comContent"));
+                        commodity.setComNum(jsonObject.getString("comNum"));
+                        commodity.setComPrice(jsonObject.getString("comPrice"));
+                        commodity.setComSpecial(jsonObject.getString("comSpecial"));
+                        commodity.setSolder(jsonObject.getString("solder"));
+                        commodity.setActive(jsonObject.getInt("active"));
+                        commodity.setComImage(jsonObject.getString("comImage"));
+                        commodity.setComMethod(jsonObject.getString("comMethod"));
+                        commodity.setComServer(jsonObject.getString("comServer"));
+                        commodity.setOperating(jsonObject.getString("operating"));
+                        commodity.setType(jsonObject.getString("type"));
+                        Log.e("commodity",commodity+"");
+                        arrayList.add(commodity);
+                        Collections.sort(arrayList, new Comparator<Commodity>() {
+                            @Override
+                            public int compare(Commodity o1, Commodity o2) {
+                                int active1 = o1.getActive();
+                                int active2 = o2.getActive();
+                                if (active1<active2){
+                                    return 1;
+                                }
+                                return -1;
+                            }
+                        });
+                    }
+                    if(arrayAdapter != null) {
+                        arrayAdapter.notifyDataSetChanged();
+                    }
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+                break;
         }
 
     }

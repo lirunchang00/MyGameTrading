@@ -29,6 +29,44 @@ public class Commodity implements Serializable {
     private String qq;
     private String email;
     private String status;
+    private String clientPhone;
+
+    @Override
+    public String toString() {
+        return "Commodity{" +
+                "comId=" + comId +
+                ", comName='" + comName + '\'' +
+                ", comContent='" + comContent + '\'' +
+                ", comNum='" + comNum + '\'' +
+                ", comPrice='" + comPrice + '\'' +
+                ", comImage='" + comImage + '\'' +
+                ", comSpecial='" + comSpecial + '\'' +
+                ", operating='" + operating + '\'' +
+                ", comServer='" + comServer + '\'' +
+                ", comMethod='" + comMethod + '\'' +
+                ", solder='" + solder + '\'' +
+                ", active=" + active +
+                ", type='" + type + '\'' +
+                ", date='" + date + '\'' +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", character='" + character + '\'' +
+                ", secretPhone='" + secretPhone + '\'' +
+                ", phone='" + phone + '\'' +
+                ", qq='" + qq + '\'' +
+                ", email='" + email + '\'' +
+                ", status='" + status + '\'' +
+                ", clientPhone='" + clientPhone + '\'' +
+                '}';
+    }
+
+    public String getClientPhone() {
+        return clientPhone;
+    }
+
+    public void setClientPhone(String clientPhone) {
+        this.clientPhone = clientPhone;
+    }
 
     public String getEmail() {
         return email;
@@ -206,34 +244,7 @@ public class Commodity implements Serializable {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Commodity{" +
-                "comId=" + comId +
-                ", comName='" + comName + '\'' +
-                ", comContent='" + comContent + '\'' +
-                ", comNum='" + comNum + '\'' +
-                ", comPrice='" + comPrice + '\'' +
-                ", comImage='" + comImage + '\'' +
-                ", comSpecial='" + comSpecial + '\'' +
-                ", operating='" + operating + '\'' +
-                ", comServer='" + comServer + '\'' +
-                ", comMethod='" + comMethod + '\'' +
-                ", solder='" + solder + '\'' +
-                ", active=" + active +
-                ", type='" + type + '\'' +
-                ", date='" + date + '\'' +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", character='" + character + '\'' +
-                ", secretPhone='" + secretPhone + '\'' +
-                ", phone='" + phone + '\'' +
-                ", qq='" + qq + '\'' +
-                ", email='" + email + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
-/*@Override
+    /*@Override
     public int describeContents() {
         return 0;
     }

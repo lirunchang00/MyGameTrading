@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.administrator.gametrading.Bean.Girls;
 import com.example.administrator.gametrading.Handler.GirlsHandler;
+import com.example.administrator.gametrading.Handler.ShopHandler;
 import com.example.administrator.gametrading.Inter.GirlsInter;
 import com.example.administrator.gametrading.Tools;
 
@@ -42,18 +43,6 @@ public class GirlsService implements GirlsInter{
                 Log.e("请求失败","请求失败");
             }
         }){
-           /* public Map<String,String> getHeaders()throws AuthFailureError {
-                String cookie =new ConnectViaSession(context).GetSession();
-                Log.e("cookie",cookie+"");
-                if (!cookie.equals("")){
-                    HashMap<String,String> headers = new HashMap<String,String>();
-                    headers.put("cookie",cookie);
-
-                    return headers;
-                }else {
-                    return super.getHeaders();
-                }
-            }*/
             public Map<String,String>getParams()throws  AuthFailureError{
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("No", String.valueOf(girls.getNo()));
@@ -73,7 +62,6 @@ public class GirlsService implements GirlsInter{
                 map.put("Chain", String.valueOf(girls.getChain()));
                 map.put("Introduction",girls.getIntroduction());
                 map.put("Skin",girls.getSkin());
-                map.put("Skill",girls.getSkill());
                 map.put("Painter",girls.getPainter());
                 map.put("Dubbing",girls.getDubbing());
                 map.put("Hp", String.valueOf(girls.getHp()));
@@ -88,7 +76,7 @@ public class GirlsService implements GirlsInter{
         //实例一个请求序列
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         //创建一个请求地址
-        String url = Tools.girlsUrl;
+        String url = Tools.getIndex;
 
         final GirlsHandler girlsHandler = new GirlsHandler(context,arrayList,arrayAdapter);
         Log.e("handler",""+girlsHandler);
@@ -110,20 +98,44 @@ public class GirlsService implements GirlsInter{
                 Log.e("error",error+"");
             }
         }){
-            /*public Map<String,String>getHeaders()throws AuthFailureError{
-                String cookie =new ConnectViaSession(context).GetSession();
-                Log.e("cookie",cookie+"");
-                if (!cookie.equals("")){
-                    HashMap<String,String> headers = new HashMap<String,String>();
-                    headers.put("cookie",cookie);
-                    return headers;
-                }else {
-                    return super.getHeaders();
-                }
-            }*/
+
         };
         // 3 将post请求添加到队列中
         requestQueue.add(stringRequest);
-        Log.e("requestQueue",""+requestQueue);
+
     }
+
+    @Override
+    public void searchGirls(final String name, Context context, ArrayList arrayList, RecyclerView.Adapter arrayAdapter) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        String url = Tools.searchGirls;
+
+        final GirlsHandler girlsHandler = new GirlsHandler(context,arrayList,arrayAdapter);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Message message = new Message();
+                message.obj = response;
+                message.arg1 = 3;
+                girlsHandler.handlemessage(message);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("name", name);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
 }

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -28,7 +29,12 @@ public class PostCollectionAdapter extends RecyclerView.Adapter<PostCollectionAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view =View.inflate(context, R.layout.item_post_collection,null);
+
+        LayoutInflater inflater  = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_post_collection,null,true);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(lp);
+
         final ViewHolder viewHolder = new PostCollectionAdapter.ViewHolder(view);
             viewHolder.myPostView.setOnClickListener(new View.OnClickListener() {
                 @Override

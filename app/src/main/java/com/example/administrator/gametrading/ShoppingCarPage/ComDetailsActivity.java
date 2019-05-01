@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,10 +23,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.administrator.gametrading.Bean.Collection;
 import com.example.administrator.gametrading.Bean.CollectionBean;
 import com.example.administrator.gametrading.Bean.Commodity;
 import com.example.administrator.gametrading.Handler.ShopHandler;
 import com.example.administrator.gametrading.R;
+import com.example.administrator.gametrading.Service.CollectionService;
 import com.example.administrator.gametrading.Service.ShopService;
 import com.example.administrator.gametrading.Tools;
 import com.example.administrator.gametrading.util.SessionUtil;
@@ -43,14 +47,16 @@ public class ComDetailsActivity extends AppCompatActivity {
     private TextView com_detail_name,com_detail_content,com_detail_num,com_detail_price,com_detail_special;
     private TextView com_detail_server,com_detail_operating,com_detail_method,com_detail_solder,com_detail_active,com_detail_type;
     private Commodity commodity;
-    private Button to_buy,add_to_collection;
+    private Button to_buy;
+    private ToggleButton add_to_collection;
     private CollectionBean collectionBean;
     private ArrayList<Commodity> list = new ArrayList<>();
     private Map<String,String> map;
     //private String id;
     //private ArrayList<Commodity> arrayList= new ArrayList<>();
     private Intent intent;
-    //private String TAG = "run";
+    private String comId;
+    private String TAG = "comdetailActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +71,10 @@ public class ComDetailsActivity extends AppCompatActivity {
             initCollection();
         }
         if (intent.getSerializableExtra("solder")!=null){
+            add_to_collection.setVisibility(View.INVISIBLE);
+            to_buy.setVisibility(View.INVISIBLE);
             initSolder();
         }
-
 
         to_buy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,10 +85,23 @@ public class ComDetailsActivity extends AppCompatActivity {
             }
         });
 
-        add_to_collection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
+        add_to_collection.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(collectionBean!=null){
+               comId = String.valueOf(collectionBean.getComId());
+                }
+                if (commodity!=null){
+                    comId = String.valueOf(commodity.getComId());
+                }
+                if (isChecked){
+                    new CollectionService().addComCollection(ComDetailsActivity.this,comId);
+                    add_to_collection.setTextOn("取消收藏");
+                }else {
+                    new CollectionService().deleteComCollection(ComDetailsActivity.this,comId);
+                    add_to_collection.setTextOff("添加收藏");
+                }
             }
         });
 
@@ -143,7 +163,6 @@ public class ComDetailsActivity extends AppCompatActivity {
 
         final String comId = String.valueOf(collectionBean.getComId());
         String status = collectionBean.getStatus();
-
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         //创建一个请求地址
         String url = Tools.showDetail;
@@ -218,7 +237,7 @@ public class ComDetailsActivity extends AppCompatActivity {
         com_detail_active = (TextView)findViewById(R.id.com_details_active);
         com_detail_type = (TextView)findViewById(R.id.com_details_type);
         com_detail_image = (ImageView)findViewById(R.id.com_details_image);
-        add_to_collection = (Button)findViewById(R.id.add_to_collection);
+        add_to_collection = (ToggleButton)findViewById(R.id.add_to_collection);
         to_buy = (Button)findViewById(R.id.to_buy);
         back = (Button) findViewById(R.id.com_details_back);
 
@@ -227,8 +246,6 @@ public class ComDetailsActivity extends AppCompatActivity {
 
     @SuppressLint("HandlerLeak")
     public class MyHandler extends Handler{
-
-
 
         @Override
         public void handleMessage(Message msg) {

@@ -10,8 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
+        >
 
         <LinearLayout
             android:id="@+id/top_shop"
@@ -51,37 +50,27 @@
                     android:paddingRight="20dp"
                     android:src="@mipmap/close"
                     android:visibility="gone" />
-
             </RelativeLayout>
         </LinearLayout>
-        <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/top_shop"
-            android:orientation="vertical">
-
-
-            <!--<android.support.design.widget.FloatingActionButton
-                android:id="@+id/fb_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="16dp"
-                android:backgroundTint="#13b9c7"
-                android:background="@drawable/blue_enter_btn" />-->
-        <ScrollView
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/shop_refresh"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/shop_recyclerview"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/top_shop"
+            >
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/shop_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+            </ScrollView>
 
-            </android.support.v7.widget.RecyclerView>
-        </ScrollView>
-        </FrameLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
         <Button
             android:id="@+id/to_add_com"
             android:layout_width="wrap_content"

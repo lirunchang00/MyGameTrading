@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/huise"
+    android:background="#f1f1f1"
     tools:context=".ForumPage.PostActivity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,7 +36,17 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:text="主题详情" />
-
+            <ToggleButton
+                android:id="@+id/post_collection_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/collectionbtn"
+                android:textOff="添加收藏"
+                android:textOn="取消收藏"
+                android:textColor="#ffffff"
+                android:layout_alignParentEnd="true"
+                android:background="#393939"
+                />
         </RelativeLayout>
         <ScrollView
             android:layout_width="match_parent"

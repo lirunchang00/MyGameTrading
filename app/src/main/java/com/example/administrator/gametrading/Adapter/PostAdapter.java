@@ -27,6 +27,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_post,viewGroup,false);
         ViewHolder viewHolder = new ViewHolder(view);
+        viewHolder.likeimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点赞
+            }
+        });
         return viewHolder;
     }
 
@@ -79,7 +85,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     static public class ViewHolder extends RecyclerView.ViewHolder{
         TextView title,author,content,active,floor,like,time;
         LinearLayout linearLayout_post_head,linearLayout_post_content,linearLayout_post_like,linearLayout_post_title;
-        ImageView head;
+        ImageView head,likeimage;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             linearLayout_post_title= (LinearLayout)itemView.findViewById(R.id.post_linearlayout_title);
@@ -94,7 +100,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             floor = (TextView)itemView.findViewById(R.id.post_floor);
             time = (TextView)itemView.findViewById(R.id.post_time);
             like = (TextView)itemView.findViewById(R.id.post_like);
-
+            likeimage = (ImageView)itemView.findViewById(R.id.like_image);
 
         }
     }

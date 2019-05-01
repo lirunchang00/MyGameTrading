@@ -49,12 +49,6 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             >
-            <ImageView
-                android:id="@+id/com_detail_image"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:background="@mipmap/picc"
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,7 +95,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="20dp"
                         android:layout_weight="10"
-                        android:text="12312312"
+                        android:text="0"
                         />
                 </LinearLayout>
                 <LinearLayout

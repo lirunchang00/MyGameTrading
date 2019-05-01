@@ -32,9 +32,8 @@ public class MyPostAdapter  extends RecyclerView.Adapter<MyPostAdapter.ViewHolde
         View view = inflater.inflate(R.layout.item_my_post,null,true);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(lp);
-        final ViewHolder holder = new ViewHolder(view);
         final Context context  = view.getContext();
-        final ViewHolder viewHolder = new MyPostAdapter.ViewHolder(view);
+        final ViewHolder viewHolder = new ViewHolder(view);
             viewHolder.forumview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

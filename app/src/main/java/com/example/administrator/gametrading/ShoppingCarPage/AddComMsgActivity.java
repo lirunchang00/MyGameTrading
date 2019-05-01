@@ -39,7 +39,7 @@ public class AddComMsgActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_com_msg);
         initView();
-
+        Cookie = new SessionUtil(getApplicationContext()).GetSession();
 
 
         add_com_msg_back.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,7 @@ public class AddComMsgActivity extends AppCompatActivity {
         String image = picPath.substring(22);
         //String cookie = Cookie.substring(5);
         Log.e("image",image);
-        Cookie = new SessionUtil(context).GetSession();
+
         String cookie = "";
         if (Cookie!="") {
              cookie = Cookie.substring(5);
@@ -127,6 +127,12 @@ public class AddComMsgActivity extends AppCompatActivity {
     }
 
     private boolean init() {
+        String telRegex = "[1][358]\\d{9}";
+        String qqRegex = "[1-9][0-9]{4,}";
+        boolean sp = SecretPhone.matches(telRegex);
+        boolean p = Phone.matches(telRegex);
+        boolean qq = Qq.matches(qqRegex);
+        Log.e("regex",sp+"");
         if (Account.equals("")) {
             Toast.makeText(AddComMsgActivity.this, "游戏账号不能为空", Toast.LENGTH_SHORT).show();
             return false;
@@ -152,6 +158,18 @@ public class AddComMsgActivity extends AppCompatActivity {
         if (Qq.equals("")) {
 
             Toast.makeText(AddComMsgActivity.this, "联系QQ不能为空", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!qq){
+            Toast.makeText(AddComMsgActivity.this, "请输入正确的联系QQ", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!sp){
+            Toast.makeText(AddComMsgActivity.this, "请输入正确的手机号码", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!p){
+            Toast.makeText(AddComMsgActivity.this, "请输入正确的手机号码", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

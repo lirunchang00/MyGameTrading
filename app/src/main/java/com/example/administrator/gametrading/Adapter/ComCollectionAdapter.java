@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -18,6 +19,7 @@ import com.example.administrator.gametrading.Bean.CollectionBean;
 import com.example.administrator.gametrading.Bean.Commodity;
 import com.example.administrator.gametrading.Bean.Forum;
 import com.example.administrator.gametrading.R;
+import com.example.administrator.gametrading.Service.CollectionService;
 import com.example.administrator.gametrading.ShoppingCarPage.ComDetailsActivity;
 import com.example.administrator.gametrading.Tools;
 
@@ -46,12 +48,24 @@ public class ComCollectionAdapter extends RecyclerView.Adapter<ComCollectionAdap
                     context.startActivity(intent);
                 }
             });
-            viewHolder.comCollectionBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //写取消收藏的地方
+
+        CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                int io = viewHolder.getAdapterPosition();
+                CollectionBean collectionBean = list.get(io);
+                String comId = String.valueOf(collectionBean.getComId());
+                if(isChecked){
+                    new CollectionService().deleteComCollection(context,comId);
+                    viewHolder.comCollectionBtn.setTextOn("添加收藏");
                 }
-            });
+                else{
+                    new CollectionService().addComCollection(context,comId);
+                    viewHolder.comCollectionBtn.setTextOff("取消收藏");
+                }
+            }
+        };
+        viewHolder.comCollectionBtn.setOnCheckedChangeListener(listener);
         return viewHolder;
     }
 

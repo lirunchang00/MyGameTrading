@@ -286,6 +286,32 @@
                     android:background="@mipmap/returnback"
                     />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:visibility="invisible"
+                android:layout_marginTop="2dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="管理员入口"
+                    />
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="23dp"
+                    android:layout_margin="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/returnback"
+                    />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
     <LinearLayout

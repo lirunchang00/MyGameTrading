@@ -12,7 +12,27 @@ public class User extends DataSupport {
     private String Pass;
     private String Head;
     private String active;
+    private String pmg;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", Name='" + Name + '\'' +
+                ", Pass='" + Pass + '\'' +
+                ", Head='" + Head + '\'' +
+                ", active='" + active + '\'' +
+                ", pmg='" + pmg + '\'' +
+                '}';
+    }
+
+    public String getPmg() {
+        return pmg;
+    }
+
+    public void setPmg(String pmg) {
+        this.pmg = pmg;
+    }
 
     public int getId() {
         return id;
@@ -53,4 +73,5 @@ public class User extends DataSupport {
     public void setActive(String active) {
         this.active = active;
     }
+
 }

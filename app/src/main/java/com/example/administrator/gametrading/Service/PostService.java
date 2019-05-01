@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -419,6 +420,9 @@ public class PostService implements PostInter {
             @Override
             public void onResponse(String response) {
                 Log.e("str",response);
+                if (response=="[]"){
+                    Toast.makeText(context,"无此关键词",Toast.LENGTH_SHORT).show();
+                }
                 Message message = new Message();
                 message.obj=response;
                 message.arg1=9;

@@ -76,6 +76,7 @@
         android:layout_below="@+id/my_order_linear1"
         >
         <Button
+            android:visibility="invisible"
             android:id="@+id/order_call_solder"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -86,6 +87,7 @@
             />
 
         <Button
+            android:visibility="invisible"
             android:id="@+id/order_assess"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -98,6 +100,7 @@
             />
 
         <Button
+            android:visibility="invisible"
             android:id="@+id/order_pop"
             android:layout_width="40dp"
             android:layout_height="40dp"

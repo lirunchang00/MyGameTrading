@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -90,6 +91,158 @@ public class CollectionService implements CollectionInter{
                 }else {
                     return super.getHeaders();
                 }
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void deleteComCollection(final Context context, final String comId) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String url = Tools.deleteComCollection;
+        StringRequest stringRequest = new StringRequest(Request.Method.POST
+                , url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(context,"取消收藏",Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            public Map<String,String> getHeaders()throws AuthFailureError {
+                String cookie =new SessionUtil(context).GetSession();
+                Log.e("cookie",cookie+"");
+                if (!cookie.equals("")){
+                    HashMap<String,String> headers = new HashMap<String,String>();
+                    headers.put("cookie",cookie);
+                    return headers;
+                }else {
+                    return super.getHeaders();
+                }
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                map.put("comId",comId);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void addComCollection(final Context context, final String comId) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String url = Tools.addComCollection;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST
+                , url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(context,"收藏成功",Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            public Map<String,String> getHeaders()throws AuthFailureError {
+                String cookie =new SessionUtil(context).GetSession();
+                Log.e("cookie",cookie+"");
+                if (!cookie.equals("")){
+                    HashMap<String,String> headers = new HashMap<String,String>();
+                    headers.put("cookie",cookie);
+                    return headers;
+                }else {
+                    return super.getHeaders();
+                }
+            }
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                map.put("comId",comId);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void deletePostCollection(final Context context, final String postId) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String url = Tools.deletePostCollection;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST
+                , url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(context,"取消收藏",Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            public Map<String,String> getHeaders()throws AuthFailureError {
+                String cookie =new SessionUtil(context).GetSession();
+                Log.e("cookie",cookie+"");
+                if (!cookie.equals("")){
+                    HashMap<String,String> headers = new HashMap<String,String>();
+                    headers.put("cookie",cookie);
+                    return headers;
+                }else {
+                    return super.getHeaders();
+                }
+            }
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                map.put("postId",postId);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void addPostCollection(final Context context, final String postId) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String url = Tools.addPostCollection;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST
+                , url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(context,"收藏成功",Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            public Map<String,String> getHeaders()throws AuthFailureError {
+                String cookie =new SessionUtil(context).GetSession();
+                Log.e("cookie",cookie+"");
+                if (!cookie.equals("")){
+                    HashMap<String,String> headers = new HashMap<String,String>();
+                    headers.put("cookie",cookie);
+                    return headers;
+                }else {
+                    return super.getHeaders();
+                }
+            }
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                map.put("postId",postId);
+                return map;
             }
         };
         requestQueue.add(stringRequest);

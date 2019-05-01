@@ -25,6 +25,7 @@ public class ForumViewAdapter extends RecyclerView.Adapter<ForumViewAdapter.View
 
     private List<Forum> mForumList;
     private Context context;
+    private ViewHolder holder;
     public ForumViewAdapter(Context context, List<Forum> mForumList) {
         this.context = context;//上下文
         this.mForumList = mForumList;
@@ -38,16 +39,15 @@ public class ForumViewAdapter extends RecyclerView.Adapter<ForumViewAdapter.View
         View view = inflater.inflate(R.layout.item_forum_all,null,true);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(lp);
-        final ViewHolder holder = new ViewHolder(view);
-        final Context context  = view.getContext();
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        final ViewHolder  holder = new ViewHolder(view);
+
+        holder.forumview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int io = holder.getAdapterPosition();
-
+                Log.e("io",""+io);
                 Forum forum  = mForumList.get(io);
-                Log.e("forum1",""+forum.getAuthor());
-                Log.e("forum1",""+forum.getPostid());
+                Log.e("forum1",""+forum.toString());
                 Intent intent = new Intent(context,PostActivity.class);
                 intent.putExtra("forum",forum);
 

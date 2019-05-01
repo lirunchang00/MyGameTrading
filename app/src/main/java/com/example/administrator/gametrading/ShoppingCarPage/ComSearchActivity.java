@@ -1,6 +1,8 @@
 
 package com.example.administrator.gametrading.ShoppingCarPage;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,10 +12,12 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.administrator.gametrading.Adapter.TrandingAdapter;
@@ -31,11 +35,14 @@ public class ComSearchActivity extends AppCompatActivity {
     private EditText com_search_editText;
     private RecyclerView recyclerView;
     private TrandingAdapter trandingAdapter;
+    private ProgressBar progressBar;
     private ArrayList<Commodity> arrayList= new ArrayList<>();
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_com_search);
+
         initData();
     }
 
@@ -44,8 +51,17 @@ public class ComSearchActivity extends AppCompatActivity {
         com_search_delete = (ImageView)this.findViewById(R.id.com_search_delete);
         com_search_enter = (ImageView)this.findViewById(R.id.com_search_enter);
         com_search_editText = (EditText) this.findViewById(R.id.com_search_editText);
+        progressBar = (ProgressBar)this.findViewById(R.id.com_search_bar);
+        String name = "";
+        intent = getIntent();
 
 
+        if (intent.getStringExtra("name")!=null) {
+
+            name = intent.getStringExtra("name");
+            Log.e("name",name);
+            com_search_editText.setText(name);
+        }
         recyclerView = (RecyclerView)this.findViewById(R.id.com_search_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(ComSearchActivity.this);
         layoutManager.setOrientation(OrientationHelper.VERTICAL);
@@ -96,12 +112,22 @@ public class ComSearchActivity extends AppCompatActivity {
         com_search_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(com_search_editText.getText().toString().trim())){
-                    Toast.makeText(ComSearchActivity.this,"请输入搜索内容",Toast.LENGTH_LONG).show();
-                }else {
-                    String a = com_search_editText.getText().toString();
-                    new ShopService().searchCom(a,ComSearchActivity.this,arrayList,trandingAdapter);
-                }
+                progressBar.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        arrayList.clear();
+                        recyclerView.removeAllViews();
+                        if (TextUtils.isEmpty(com_search_editText.getText().toString().trim())){
+                            Toast.makeText(ComSearchActivity.this,"请输入搜索内容",Toast.LENGTH_LONG).show();
+                        }else {
+
+                            String a = com_search_editText.getText().toString();
+                            new ShopService().searchCom(a,ComSearchActivity.this,arrayList,trandingAdapter);
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                },1000);
             }
         });
     }

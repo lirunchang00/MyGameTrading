@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.administrator.gametrading.MainActivity;
+import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;

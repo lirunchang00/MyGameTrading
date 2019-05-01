@@ -41,6 +41,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 public class AddComActivity extends AppCompatActivity{
     private String Cookie = "lrc";
@@ -236,7 +237,9 @@ public class AddComActivity extends AppCompatActivity{
     }
 
     private boolean init() {
-
+        String Regex = "^[0-9]*$";
+        boolean s = ComPrice.matches(Regex);
+        Log.e("regex",s+"");
         if (ComName.equals("")) {
             Toast.makeText(AddComActivity.this, "标题不能为空", Toast.LENGTH_SHORT).show();
             return false;
@@ -261,7 +264,11 @@ public class AddComActivity extends AppCompatActivity{
         }
         if (ComPrice.equals("")) {
 
-            Toast.makeText(AddComActivity.this, "服务器不能为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddComActivity.this, "价格不能为空", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!s){
+            Toast.makeText(AddComActivity.this, "请填写正确的价格", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
